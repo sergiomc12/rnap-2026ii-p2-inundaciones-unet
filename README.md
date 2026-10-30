@@ -307,3 +307,11 @@ describa la misma inundación, la misma semana y el mismo lugar. La pregunta que
 responde —¿hasta dónde pudo llegar el agua?— no es la que responde una etiqueta
 de Sen1Floods11 —¿qué píxel es agua?—. Bolivia sigue siendo el experimento de
 generalización válido del informe.
+
+## Pesos preentrenados
+
+Los pesos de la U-Net entrenada estan publicados como *release* (superan el limite de 100 MB/archivo de GitHub):
+
+**https://github.com/sergiomc12/rnap-2026ii-p2-inundaciones-unet/releases/tag/v1.0-pesos**
+
+Cada asset `<corrida>_pesos.pt` va en `pregunta2/paso3_entrenamiento/corridas/<corrida>/pesos.pt` (y los de fusion/optico/sar en `pregunta2/paso8_fusion_s2/corridas/<corrida>/pesos.pt`). No hacen falta para leer el informe ni correr el notebook; solo para reusar un modelo sin reentrenar. El dataset Sen1Floods11 se descarga con los scripts del repo.
