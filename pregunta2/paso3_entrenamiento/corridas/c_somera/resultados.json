@@ -1,0 +1,992 @@
+{
+  "variante": "somera",
+  "parametros_millones": 7.7,
+  "epocas": 60,
+  "lote": 8,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "peso_dice": 0.5,
+  "aumentacion": true,
+  "semilla": 42,
+  "chips_debiles": 0,
+  "region_retenida": "bolivia",
+  "chips_entrenamiento": 252,
+  "mejor_epoca": 35,
+  "iou_validacion": 0.6340510892868313,
+  "minutos": 8.09,
+  "resultados": {
+    "valid": {
+      "iou_agua": 0.6340510892868313,
+      "f1": 0.77604806048452,
+      "precision": 0.7559343795485892,
+      "exhaustividad": 0.7972613575675779,
+      "exactitud": 0.9492662255832488,
+      "pixeles_observados": 20294725,
+      "iou_promedio_por_chip": 0.41506057914528094,
+      "perdida": 0.2118315448921718,
+      "confusion": {
+        "vp": 1783956,
+        "fp": 575979,
+        "fn": 453649,
+        "vn": 17481141
+      }
+    },
+    "test": {
+      "iou_agua": 0.6540479333611493,
+      "f1": 0.7908451988233194,
+      "precision": 0.7638732598170845,
+      "exhaustividad": 0.8197915826384075,
+      "exactitud": 0.9457672127227631,
+      "pixeles_observados": 20517367,
+      "iou_promedio_por_chip": 0.40699926994221886,
+      "perdida": 0.22953427102830676,
+      "confusion": {
+        "vp": 2103668,
+        "fp": 650281,
+        "fn": 462433,
+        "vn": 17300985
+      }
+    },
+    "bolivia": {
+      "iou_agua": 0.676133998803832,
+      "f1": 0.8067779775201183,
+      "precision": 0.7677449845410877,
+      "exhaustividad": 0.849992525238313,
+      "exactitud": 0.9354229613834923,
+      "pixeles_observados": 2867815,
+      "iou_promedio_por_chip": 0.43087791270077364,
+      "perdida": 0.24501175085703533,
+      "confusion": {
+        "vp": 386631,
+        "fp": 116962,
+        "fn": 68233,
+        "vn": 2295989
+      }
+    }
+  },
+  "otsu": {
+    "test": {
+      "iou_agua": 0.5458456321591642,
+      "f1": 0.7062097544587977,
+      "precision": 0.6811499390506381,
+      "exhaustividad": 0.7331839237816439,
+      "exactitud": 0.9237045377216287,
+      "pixeles_observados": 20517367
+    },
+    "bolivia": {
+      "iou_agua": 0.6972798500203392,
+      "f1": 0.8216439381071818,
+      "precision": 0.7809091251220638,
+      "exhaustividad": 0.8668623570800352,
+      "exactitud": 0.9403152505220991,
+      "pixeles_observados": 2867751
+    }
+  },
+  "delta_vs_otsu": {
+    "test": 0.10820230120198515,
+    "bolivia": -0.02114585121650725
+  },
+  "caida_test_a_bolivia": -0.022086065442682656,
+  "historia": [
+    {
+      "epoca": 1,
+      "perdida_train": 0.4730318496151576,
+      "val_iou_agua": 0.5153611134334313,
+      "val_f1": 0.6801825767664729,
+      "val_precision": 0.5739225261726976,
+      "val_exhaustividad": 0.8347304372308786,
+      "val_exactitud": 0.9134527814493668,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3032103971129708,
+      "val_perdida": 0.47546200069148886,
+      "val_confusion": {
+        "vp": 1867797,
+        "fp": 1386644,
+        "fn": 369808,
+        "vn": 16670476
+      }
+    },
+    {
+      "epoca": 2,
+      "perdida_train": 0.3661986286678011,
+      "val_iou_agua": 0.5620989557507352,
+      "val_f1": 0.7196713802047117,
+      "val_precision": 0.8692610022106285,
+      "val_exhaustividad": 0.6140078342692298,
+      "val_exactitud": 0.9472603348899775,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3120610849109664,
+      "val_perdida": 0.2753914885976341,
+      "val_confusion": {
+        "vp": 1373907,
+        "fp": 206639,
+        "fn": 863698,
+        "vn": 17850481
+      }
+    },
+    {
+      "epoca": 3,
+      "perdida_train": 0.3426064361655523,
+      "val_iou_agua": 0.5827791720713996,
+      "val_f1": 0.73639984952381,
+      "val_precision": 0.8545799845800909,
+      "val_exhaustividad": 0.6469350041674022,
+      "val_exactitud": 0.9489350557842001,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3239808080918718,
+      "val_perdida": 0.2641869190703617,
+      "val_confusion": {
+        "vp": 1447585,
+        "fp": 246329,
+        "fn": 790020,
+        "vn": 17810791
+      }
+    },
+    {
+      "epoca": 4,
+      "perdida_train": 0.33294671064331416,
+      "val_iou_agua": 0.612195081487559,
+      "val_f1": 0.7594553395147338,
+      "val_precision": 0.796598818682653,
+      "val_exhaustividad": 0.7256213674888999,
+      "val_exactitud": 0.9493203283119136,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.36089802702163604,
+      "val_perdida": 0.2406528736098429,
+      "val_confusion": {
+        "vp": 1623654,
+        "fp": 414579,
+        "fn": 613951,
+        "vn": 17642541
+      }
+    },
+    {
+      "epoca": 5,
+      "perdida_train": 0.3330680380264918,
+      "val_iou_agua": 0.46652331114768186,
+      "val_f1": 0.6362303382447931,
+      "val_precision": 0.8337759599419297,
+      "val_exhaustividad": 0.514362901405744,
+      "val_exactitud": 0.9351497002299859,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.22959586031147355,
+      "val_perdida": 0.3415909975432278,
+      "val_confusion": {
+        "vp": 1150941,
+        "fp": 229455,
+        "fn": 1086664,
+        "vn": 17827665
+      }
+    },
+    {
+      "epoca": 6,
+      "perdida_train": 0.33305196771546014,
+      "val_iou_agua": 0.6041190624853083,
+      "val_f1": 0.7532097543299923,
+      "val_precision": 0.8222426231450114,
+      "val_exhaustividad": 0.6948706317692354,
+      "val_exactitud": 0.9497950822196408,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3581558504240069,
+      "val_perdida": 0.24509799982724564,
+      "val_confusion": {
+        "vp": 1554846,
+        "fp": 336136,
+        "fn": 682759,
+        "vn": 17720984
+      }
+    },
+    {
+      "epoca": 7,
+      "perdida_train": 0.34473212039659895,
+      "val_iou_agua": 0.5723861986090505,
+      "val_f1": 0.7280478537847629,
+      "val_precision": 0.851149845287889,
+      "val_exhaustividad": 0.6360550678068738,
+      "val_exactitud": 0.9476088983713749,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3366642167023573,
+      "val_perdida": 0.2591959023743533,
+      "val_confusion": {
+        "vp": 1423240,
+        "fp": 248898,
+        "fn": 814365,
+        "vn": 17808222
+      }
+    },
+    {
+      "epoca": 8,
+      "perdida_train": 0.3086689232833802,
+      "val_iou_agua": 0.6142799041029878,
+      "val_f1": 0.7610574876657796,
+      "val_precision": 0.7944778460935628,
+      "val_exhaustividad": 0.730335336218859,
+      "val_exactitud": 0.9494375016167994,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.36223664256242843,
+      "val_perdida": 0.23285476009497483,
+      "val_confusion": {
+        "vp": 1634202,
+        "fp": 422749,
+        "fn": 603403,
+        "vn": 17634371
+      }
+    },
+    {
+      "epoca": 9,
+      "perdida_train": 0.2855298773400367,
+      "val_iou_agua": 0.5984645729506617,
+      "val_f1": 0.7487992953712261,
+      "val_precision": 0.8434499354450039,
+      "val_exhaustividad": 0.6732484062200433,
+      "val_exactitud": 0.950196368760848,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.34406122760436175,
+      "val_perdida": 0.24389800161458133,
+      "val_confusion": {
+        "vp": 1506464,
+        "fp": 279610,
+        "fn": 731141,
+        "vn": 17777510
+      }
+    },
+    {
+      "epoca": 10,
+      "perdida_train": 0.3184421518965373,
+      "val_iou_agua": 0.5949210692129105,
+      "val_f1": 0.7460194497355315,
+      "val_precision": 0.8114835009253855,
+      "val_exhaustividad": 0.6903291689105092,
+      "val_exactitud": 0.9481753017101735,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3563362629780447,
+      "val_perdida": 0.2445631931337078,
+      "val_confusion": {
+        "vp": 1544684,
+        "fp": 358847,
+        "fn": 692921,
+        "vn": 17698273
+      }
+    },
+    {
+      "epoca": 11,
+      "perdida_train": 0.3210467667806716,
+      "val_iou_agua": 0.5229705594704526,
+      "val_f1": 0.6867769783446018,
+      "val_precision": 0.8473538740847044,
+      "val_exhaustividad": 0.5773641907307143,
+      "val_exactitud": 0.9419345174669772,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3295395406254472,
+      "val_perdida": 0.28797835479961353,
+      "val_confusion": {
+        "vp": 1291913,
+        "fp": 232731,
+        "fn": 945692,
+        "vn": 17824389
+      }
+    },
+    {
+      "epoca": 12,
+      "perdida_train": 0.30671774962591747,
+      "val_iou_agua": 0.576125928479644,
+      "val_f1": 0.7310658597379769,
+      "val_precision": 0.8236090708134352,
+      "val_exhaustividad": 0.6572187673874522,
+      "val_exactitud": 0.9466874273980062,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.32073483569444167,
+      "val_perdida": 0.2671807890527704,
+      "val_confusion": {
+        "vp": 1470596,
+        "fp": 314955,
+        "fn": 767009,
+        "vn": 17742165
+      }
+    },
+    {
+      "epoca": 13,
+      "perdida_train": 0.28343913715983193,
+      "val_iou_agua": 0.5701194782418064,
+      "val_f1": 0.72621158598735,
+      "val_precision": 0.8035279858108665,
+      "val_exhaustividad": 0.6624681299871962,
+      "val_exactitud": 0.9449259351875918,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3233919831474062,
+      "val_perdida": 0.26759831590598887,
+      "val_confusion": {
+        "vp": 1482342,
+        "fp": 362450,
+        "fn": 755263,
+        "vn": 17694670
+      }
+    },
+    {
+      "epoca": 14,
+      "perdida_train": 0.3136505375778864,
+      "val_iou_agua": 0.612876695145412,
+      "val_f1": 0.7599796028922805,
+      "val_precision": 0.8392932190297157,
+      "val_exhaustividad": 0.69436205228358,
+      "val_exactitud": 0.9516426559118194,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3721668788989681,
+      "val_perdida": 0.2392257632834188,
+      "val_confusion": {
+        "vp": 1553708,
+        "fp": 297502,
+        "fn": 683897,
+        "vn": 17759618
+      }
+    },
+    {
+      "epoca": 15,
+      "perdida_train": 0.32226719175066265,
+      "val_iou_agua": 0.5994211147459759,
+      "val_f1": 0.7495475822090513,
+      "val_precision": 0.8057006374009007,
+      "val_exhaustividad": 0.7007116984454361,
+      "val_exactitud": 0.9483707712225714,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.35210074812735087,
+      "val_perdida": 0.25221506866176474,
+      "val_confusion": {
+        "vp": 1567916,
+        "fp": 378112,
+        "fn": 669689,
+        "vn": 17679008
+      }
+    },
+    {
+      "epoca": 16,
+      "perdida_train": 0.30628966433661325,
+      "val_iou_agua": 0.5847135109816521,
+      "val_f1": 0.7379422298475272,
+      "val_precision": 0.8663442863132732,
+      "val_exhaustividad": 0.6426884995341001,
+      "val_exactitud": 0.949672488787111,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3351219363778925,
+      "val_perdida": 0.252802964676632,
+      "val_confusion": {
+        "vp": 1438083,
+        "fp": 221861,
+        "fn": 799522,
+        "vn": 17835259
+      }
+    },
+    {
+      "epoca": 17,
+      "perdida_train": 0.3054459073713848,
+      "val_iou_agua": 0.6239771316880343,
+      "val_f1": 0.7684555644443646,
+      "val_precision": 0.772826772311955,
+      "val_exhaustividad": 0.7641335266948367,
+      "val_exactitud": 0.9492290730719436,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.384489400141943,
+      "val_perdida": 0.2263638608241349,
+      "val_confusion": {
+        "vp": 1709829,
+        "fp": 502606,
+        "fn": 527776,
+        "vn": 17554514
+      }
+    },
+    {
+      "epoca": 18,
+      "perdida_train": 0.2994899182092576,
+      "val_iou_agua": 0.6048724068782091,
+      "val_f1": 0.7537950110997351,
+      "val_precision": 0.858720194157895,
+      "val_exhaustividad": 0.6717190925118598,
+      "val_exactitud": 0.9516204826623667,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3610152370017273,
+      "val_perdida": 0.23439570524719325,
+      "val_confusion": {
+        "vp": 1503042,
+        "fp": 247286,
+        "fn": 734563,
+        "vn": 17809834
+      }
+    },
+    {
+      "epoca": 19,
+      "perdida_train": 0.2765168154996539,
+      "val_iou_agua": 0.6136495575890434,
+      "val_f1": 0.7605735144945577,
+      "val_precision": 0.8378951761181251,
+      "val_exhaustividad": 0.6963168208866176,
+      "val_exactitud": 0.9516642871485078,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3721811108917177,
+      "val_perdida": 0.22821611835715477,
+      "val_confusion": {
+        "vp": 1558082,
+        "fp": 301437,
+        "fn": 679523,
+        "vn": 17755683
+      }
+    },
+    {
+      "epoca": 20,
+      "perdida_train": 0.28969533268421416,
+      "val_iou_agua": 0.6146350970630234,
+      "val_f1": 0.7613300344839867,
+      "val_precision": 0.8183549871639134,
+      "val_exhaustividad": 0.7117346448546549,
+      "val_exactitud": 0.9507990869548614,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.360174503434512,
+      "val_perdida": 0.22824567556381226,
+      "val_confusion": {
+        "vp": 1592581,
+        "fp": 353495,
+        "fn": 645024,
+        "vn": 17703625
+      }
+    },
+    {
+      "epoca": 21,
+      "perdida_train": 0.2995778889883132,
+      "val_iou_agua": 0.5903333940235147,
+      "val_f1": 0.7424020601491388,
+      "val_precision": 0.8332028983814386,
+      "val_exhaustividad": 0.6694470203632902,
+      "val_exactitud": 0.9487788082863897,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3649235981499014,
+      "val_perdida": 0.2450402466098914,
+      "val_confusion": {
+        "vp": 1497958,
+        "fp": 299873,
+        "fn": 739647,
+        "vn": 17757247
+      }
+    },
+    {
+      "epoca": 22,
+      "perdida_train": 0.30286537844037253,
+      "val_iou_agua": 0.6016172423502796,
+      "val_f1": 0.7512621947893636,
+      "val_precision": 0.8688499771145564,
+      "val_exhaustividad": 0.6617083891035281,
+      "val_exactitud": 0.9516888748184565,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.35950466199788367,
+      "val_perdida": 0.23302288068814225,
+      "val_confusion": {
+        "vp": 1480642,
+        "fp": 223498,
+        "fn": 756963,
+        "vn": 17833622
+      }
+    },
+    {
+      "epoca": 23,
+      "perdida_train": 0.27718991987288943,
+      "val_iou_agua": 0.5861989886460154,
+      "val_f1": 0.7391241487884149,
+      "val_precision": 0.841199915132628,
+      "val_exhaustividad": 0.6591404649167302,
+      "val_exactitud": 0.9486991324100228,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.34961447210720203,
+      "val_perdida": 0.24585261639584316,
+      "val_confusion": {
+        "vp": 1474896,
+        "fp": 278428,
+        "fn": 762709,
+        "vn": 17778692
+      }
+    },
+    {
+      "epoca": 24,
+      "perdida_train": 0.2837959404975649,
+      "val_iou_agua": 0.6082026615974133,
+      "val_f1": 0.7563756435936887,
+      "val_precision": 0.8502343400491105,
+      "val_exhaustividad": 0.6811792072327332,
+      "val_exactitud": 0.9516190044457365,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.37280742314485404,
+      "val_perdida": 0.2257428989651498,
+      "val_confusion": {
+        "vp": 1524210,
+        "fp": 268484,
+        "fn": 713395,
+        "vn": 17788636
+      }
+    },
+    {
+      "epoca": 25,
+      "perdida_train": 0.27443066002830624,
+      "val_iou_agua": 0.6303491873392822,
+      "val_f1": 0.7732689318758854,
+      "val_precision": 0.8057564308210454,
+      "val_exhaustividad": 0.7432996440390507,
+      "val_exactitud": 0.9519410093016781,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.38845670363773954,
+      "val_perdida": 0.2120799372035466,
+      "val_confusion": {
+        "vp": 1663211,
+        "fp": 400950,
+        "fn": 574394,
+        "vn": 17656170
+      }
+    },
+    {
+      "epoca": 26,
+      "perdida_train": 0.2844304470788865,
+      "val_iou_agua": 0.5509620910670556,
+      "val_f1": 0.7104778308127389,
+      "val_precision": 0.9059397743530055,
+      "val_exhaustividad": 0.5843917939046436,
+      "val_exactitud": 0.9474871425949354,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.31395535530711915,
+      "val_perdida": 0.26603303933411504,
+      "val_confusion": {
+        "vp": 1307638,
+        "fp": 135767,
+        "fn": 929967,
+        "vn": 17921353
+      }
+    },
+    {
+      "epoca": 27,
+      "perdida_train": 0.2487191298887843,
+      "val_iou_agua": 0.6151271178496209,
+      "val_f1": 0.7617073740531343,
+      "val_precision": 0.8300058028210882,
+      "val_exhaustividad": 0.7037944588075197,
+      "val_exactitud": 0.9514489602593778,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3692198936047023,
+      "val_perdida": 0.22525871436247666,
+      "val_confusion": {
+        "vp": 1574814,
+        "fp": 322539,
+        "fn": 662791,
+        "vn": 17734581
+      }
+    },
+    {
+      "epoca": 28,
+      "perdida_train": 0.27774797734760104,
+      "val_iou_agua": 0.6111727911835525,
+      "val_f1": 0.7586682130283379,
+      "val_precision": 0.8567667992993753,
+      "val_exhaustividad": 0.6807260441409454,
+      "val_exactitud": 0.9522508927812523,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3676951982086555,
+      "val_perdida": 0.22559786110781552,
+      "val_confusion": {
+        "vp": 1523196,
+        "fp": 254646,
+        "fn": 714409,
+        "vn": 17802474
+      }
+    },
+    {
+      "epoca": 29,
+      "perdida_train": 0.2830403215355343,
+      "val_iou_agua": 0.6333167415277845,
+      "val_f1": 0.7754977652838944,
+      "val_precision": 0.8475220976323208,
+      "val_exhaustividad": 0.7147561790396428,
+      "val_exactitud": 0.9543723307411163,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3936002795164711,
+      "val_perdida": 0.21106655343195027,
+      "val_confusion": {
+        "vp": 1599342,
+        "fp": 287738,
+        "fn": 638263,
+        "vn": 17769382
+      }
+    },
+    {
+      "epoca": 30,
+      "perdida_train": 0.2758189340432485,
+      "val_iou_agua": 0.616591599592341,
+      "val_f1": 0.7628291520849522,
+      "val_precision": 0.8158998925820525,
+      "val_exhaustividad": 0.7162408021076105,
+      "val_exactitud": 0.9508952695835987,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.38517834129126977,
+      "val_perdida": 0.22163788924056493,
+      "val_confusion": {
+        "vp": 1602664,
+        "fp": 361626,
+        "fn": 634941,
+        "vn": 17695494
+      }
+    },
+    {
+      "epoca": 31,
+      "perdida_train": 0.3138145842249431,
+      "val_iou_agua": 0.6291788143183273,
+      "val_f1": 0.772387670142378,
+      "val_precision": 0.8070101538490008,
+      "val_exhaustividad": 0.7406137365620831,
+      "val_exactitud": 0.9518737011711171,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3925981145036221,
+      "val_perdida": 0.21334815226244122,
+      "val_confusion": {
+        "vp": 1657201,
+        "fp": 396306,
+        "fn": 580404,
+        "vn": 17660814
+      }
+    },
+    {
+      "epoca": 32,
+      "perdida_train": 0.2749037697674736,
+      "val_iou_agua": 0.5786042149799113,
+      "val_f1": 0.7330579881763136,
+      "val_precision": 0.8968557265660261,
+      "val_exhaustividad": 0.6198511354774413,
+      "val_exactitud": 0.9502267214756543,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.33085276976336786,
+      "val_perdida": 0.2486778621593218,
+      "val_confusion": {
+        "vp": 1386982,
+        "fp": 159512,
+        "fn": 850623,
+        "vn": 17897608
+      }
+    },
+    {
+      "epoca": 33,
+      "perdida_train": 0.2821661520098883,
+      "val_iou_agua": 0.6123779424665287,
+      "val_f1": 0.7595960306052637,
+      "val_precision": 0.8667079186648103,
+      "val_exhaustividad": 0.6760469341103545,
+      "val_exactitud": 0.9528191192538948,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3782571061500521,
+      "val_perdida": 0.2234232375461064,
+      "val_confusion": {
+        "vp": 1512726,
+        "fp": 232644,
+        "fn": 724879,
+        "vn": 17824476
+      }
+    },
+    {
+      "epoca": 34,
+      "perdida_train": 0.26910510777481017,
+      "val_iou_agua": 0.5868377624535434,
+      "val_f1": 0.7396317082172081,
+      "val_precision": 0.8590725132956316,
+      "val_exhaustividad": 0.6493496394582601,
+      "val_exactitud": 0.9495940940318235,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3517951738047079,
+      "val_perdida": 0.2426038146688697,
+      "val_confusion": {
+        "vp": 1452988,
+        "fp": 238357,
+        "fn": 784617,
+        "vn": 17818763
+      }
+    },
+    {
+      "epoca": 35,
+      "perdida_train": 0.26155029071701896,
+      "val_iou_agua": 0.6340510892868313,
+      "val_f1": 0.77604806048452,
+      "val_precision": 0.7559343795485892,
+      "val_exhaustividad": 0.7972613575675779,
+      "val_exactitud": 0.9492662255832488,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.41506057914528094,
+      "val_perdida": 0.2118315448921718,
+      "val_confusion": {
+        "vp": 1783956,
+        "fp": 575979,
+        "fn": 453649,
+        "vn": 17481141
+      }
+    },
+    {
+      "epoca": 36,
+      "perdida_train": 0.2645832119243486,
+      "val_iou_agua": 0.6135401116328202,
+      "val_f1": 0.7604894445567255,
+      "val_precision": 0.8283277307870757,
+      "val_exhaustividad": 0.7029216506041057,
+      "val_exactitud": 0.9511832754570461,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3731672679600301,
+      "val_perdida": 0.22469596916370177,
+      "val_confusion": {
+        "vp": 1572861,
+        "fp": 325978,
+        "fn": 664744,
+        "vn": 17731142
+      }
+    },
+    {
+      "epoca": 37,
+      "perdida_train": 0.25951638628566076,
+      "val_iou_agua": 0.6297996224992927,
+      "val_f1": 0.77285528086391,
+      "val_precision": 0.8351645100972909,
+      "val_exhaustividad": 0.7191979817706878,
+      "val_exactitud": 0.9533895630514826,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3961854412119317,
+      "val_perdida": 0.2125892930486229,
+      "val_confusion": {
+        "vp": 1609281,
+        "fp": 317622,
+        "fn": 628324,
+        "vn": 17739498
+      }
+    },
+    {
+      "epoca": 38,
+      "perdida_train": 0.25494331535365844,
+      "val_iou_agua": 0.5881566056978358,
+      "val_f1": 0.7406783482028209,
+      "val_precision": 0.8536227336773448,
+      "val_exhaustividad": 0.6541293034293363,
+      "val_exactitud": 0.9494986505114014,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.34056160502271393,
+      "val_perdida": 0.243691257546457,
+      "val_confusion": {
+        "vp": 1463683,
+        "fp": 250989,
+        "fn": 773922,
+        "vn": 17806131
+      }
+    },
+    {
+      "epoca": 39,
+      "perdida_train": 0.25901058883894057,
+      "val_iou_agua": 0.6074486521975362,
+      "val_f1": 0.7557922940394963,
+      "val_precision": 0.8684237699716096,
+      "val_exhaustividad": 0.6690224592812404,
+      "val_exactitud": 0.9523318990525863,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3739571766098168,
+      "val_perdida": 0.22601377394761932,
+      "val_confusion": {
+        "vp": 1497008,
+        "fp": 226814,
+        "fn": 740597,
+        "vn": 17830306
+      }
+    },
+    {
+      "epoca": 40,
+      "perdida_train": 0.28046309474914793,
+      "val_iou_agua": 0.6108165035608508,
+      "val_f1": 0.7583936496932921,
+      "val_precision": 0.851707289364887,
+      "val_exhaustividad": 0.6835080364943767,
+      "val_exactitud": 0.9519838283100658,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.38536500500183246,
+      "val_perdida": 0.2226196149092042,
+      "val_confusion": {
+        "vp": 1529421,
+        "fp": 266291,
+        "fn": 708184,
+        "vn": 17790829
+      }
+    },
+    {
+      "epoca": 41,
+      "perdida_train": 0.2636794703347342,
+      "val_iou_agua": 0.6105650762192399,
+      "val_f1": 0.7581998209628706,
+      "val_precision": 0.8231913086907857,
+      "val_exhaustividad": 0.7027196489103305,
+      "val_exactitud": 0.9505819862057752,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3770852342108846,
+      "val_perdida": 0.22485515207387088,
+      "val_confusion": {
+        "vp": 1572409,
+        "fp": 337729,
+        "fn": 665196,
+        "vn": 17719391
+      }
+    },
+    {
+      "epoca": 42,
+      "perdida_train": 0.27528169396377744,
+      "val_iou_agua": 0.6074336840956978,
+      "val_f1": 0.7557807082255151,
+      "val_precision": 0.8635901500921921,
+      "val_exhaustividad": 0.6719014303239401,
+      "val_exactitud": 0.9521237661510565,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3737873544815091,
+      "val_perdida": 0.2261109653483616,
+      "val_confusion": {
+        "vp": 1503450,
+        "fp": 237480,
+        "fn": 734155,
+        "vn": 17819640
+      }
+    },
+    {
+      "epoca": 43,
+      "perdida_train": 0.265913736489084,
+      "val_iou_agua": 0.6127859004623574,
+      "val_f1": 0.7599097937137006,
+      "val_precision": 0.8380004988893516,
+      "val_exhaustividad": 0.6951325189208998,
+      "val_exactitud": 0.9515704696663788,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3809009052635143,
+      "val_perdida": 0.22399894876426527,
+      "val_confusion": {
+        "vp": 1555432,
+        "fp": 300691,
+        "fn": 682173,
+        "vn": 17756429
+      }
+    },
+    {
+      "epoca": 44,
+      "perdida_train": 0.2624354114135106,
+      "val_iou_agua": 0.5922679061408529,
+      "val_f1": 0.7439299678862717,
+      "val_precision": 0.8818371333828722,
+      "val_exhaustividad": 0.643323106625164,
+      "val_exactitud": 0.9511700700551498,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3519296829057612,
+      "val_perdida": 0.2333210271395994,
+      "val_confusion": {
+        "vp": 1439503,
+        "fp": 192888,
+        "fn": 798102,
+        "vn": 17864232
+      }
+    },
+    {
+      "epoca": 45,
+      "perdida_train": 0.2380015313152283,
+      "val_iou_agua": 0.6236983165303782,
+      "val_f1": 0.768244088425412,
+      "val_precision": 0.8475345437762973,
+      "val_exhaustividad": 0.7025203286549682,
+      "val_exactitud": 0.9532673145361664,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.388129137395257,
+      "val_perdida": 0.21682733799634354,
+      "val_confusion": {
+        "vp": 1571963,
+        "fp": 282785,
+        "fn": 665642,
+        "vn": 17774335
+      }
+    },
+    {
+      "epoca": 46,
+      "perdida_train": 0.2591371328111679,
+      "val_iou_agua": 0.599943849948914,
+      "val_f1": 0.7499561312330681,
+      "val_precision": 0.8651723400600815,
+      "val_exhaustividad": 0.6618205626104697,
+      "val_exactitud": 0.9513423808403415,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.35509312051431163,
+      "val_perdida": 0.2331177598974678,
+      "val_confusion": {
+        "vp": 1480893,
+        "fp": 230781,
+        "fn": 756712,
+        "vn": 17826339
+      }
+    },
+    {
+      "epoca": 47,
+      "perdida_train": 0.2526092479626338,
+      "val_iou_agua": 0.6301023564489984,
+      "val_f1": 0.7730831796619302,
+      "val_precision": 0.8387949912260704,
+      "val_exhaustividad": 0.7169192060260859,
+      "val_exactitud": 0.9535975481313494,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.38527465658002386,
+      "val_perdida": 0.21302910869041186,
+      "val_confusion": {
+        "vp": 1604182,
+        "fp": 308302,
+        "fn": 633423,
+        "vn": 17748818
+      }
+    },
+    {
+      "epoca": 48,
+      "perdida_train": 0.24905516396439265,
+      "val_iou_agua": 0.623191399128677,
+      "val_f1": 0.7678594150550623,
+      "val_precision": 0.8388667179281872,
+      "val_exhaustividad": 0.7079350466235104,
+      "val_exactitud": 0.9528053225653464,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3830137618257357,
+      "val_perdida": 0.21785605054223137,
+      "val_confusion": {
+        "vp": 1584079,
+        "fp": 304277,
+        "fn": 653526,
+        "vn": 17752843
+      }
+    },
+    {
+      "epoca": 49,
+      "perdida_train": 0.24599918628495837,
+      "val_iou_agua": 0.625243661682371,
+      "val_f1": 0.7694152900558308,
+      "val_precision": 0.8289196317394331,
+      "val_exhaustividad": 0.7178818424163336,
+      "val_exactitud": 0.9525591009486455,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3893881265575417,
+      "val_perdida": 0.2171470710400785,
+      "val_confusion": {
+        "vp": 1606336,
+        "fp": 331531,
+        "fn": 631269,
+        "vn": 17725589
+      }
+    },
+    {
+      "epoca": 50,
+      "perdida_train": 0.2445408713722986,
+      "val_iou_agua": 0.6112190691079769,
+      "val_f1": 0.7587038669376815,
+      "val_precision": 0.8450596042767605,
+      "val_exhaustividad": 0.6883609931154069,
+      "val_exactitud": 0.9517247462086823,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3816073544155135,
+      "val_perdida": 0.22540128800306428,
+      "val_confusion": {
+        "vp": 1540280,
+        "fp": 282408,
+        "fn": 697325,
+        "vn": 17774712
+      }
+    }
+  ]
+}

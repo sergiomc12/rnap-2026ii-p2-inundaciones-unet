@@ -1,0 +1,164 @@
+{
+  "variante": "base",
+  "parametros_millones": 31.037,
+  "epocas": 4,
+  "lote": 8,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "peso_dice": 0.5,
+  "aumentacion": true,
+  "semilla": 42,
+  "chips_debiles": -1,
+  "region_retenida": "bolivia",
+  "chips_entrenamiento": 4412,
+  "mejor_epoca": 2,
+  "iou_validacion": 0.5545898619482436,
+  "minutos": 11.03,
+  "resultados": {
+    "valid": {
+      "iou_agua": 0.5545898619482436,
+      "f1": 0.7134870431397518,
+      "precision": 0.792127161847955,
+      "exhaustividad": 0.6490511059816187,
+      "exactitud": 0.9425265432273657,
+      "pixeles_observados": 20294725,
+      "iou_promedio_por_chip": 0.3033951687697562,
+      "perdida": 0.2794588857822204,
+      "confusion": {
+        "vp": 1452320,
+        "fp": 381123,
+        "fn": 785285,
+        "vn": 17675997
+      }
+    },
+    "test": {
+      "iou_agua": 0.5870970380173601,
+      "f1": 0.7398376078513459,
+      "precision": 0.8155626455943535,
+      "exhaustividad": 0.6769799785744989,
+      "exactitud": 0.9404521545089094,
+      "pixeles_observados": 20517367,
+      "iou_promedio_por_chip": 0.3089898114185313,
+      "perdida": 0.30075131323602466,
+      "confusion": {
+        "vp": 1737199,
+        "fp": 392863,
+        "fn": 828902,
+        "vn": 17558403
+      }
+    },
+    "bolivia": {
+      "iou_agua": 0.6671697013000879,
+      "f1": 0.8003620756541069,
+      "precision": 0.9098904852977002,
+      "exhaustividad": 0.7143695698054803,
+      "exactitud": 0.943475084689912,
+      "pixeles_observados": 2867815,
+      "iou_promedio_por_chip": 0.40574172517526363,
+      "perdida": 0.21634935736656188,
+      "confusion": {
+        "vp": 324941,
+        "fp": 32180,
+        "fn": 129923,
+        "vn": 2380771
+      }
+    }
+  },
+  "otsu": {
+    "test": {
+      "iou_agua": 0.5458456321591642,
+      "f1": 0.7062097544587977,
+      "precision": 0.6811499390506381,
+      "exhaustividad": 0.7331839237816439,
+      "exactitud": 0.9237045377216287,
+      "pixeles_observados": 20517367
+    },
+    "bolivia": {
+      "iou_agua": 0.6972798500203392,
+      "f1": 0.8216439381071818,
+      "precision": 0.7809091251220638,
+      "exhaustividad": 0.8668623570800352,
+      "exactitud": 0.9403152505220991,
+      "pixeles_observados": 2867751
+    }
+  },
+  "delta_vs_otsu": {
+    "test": 0.04125140585819598,
+    "bolivia": -0.030110148720251306
+  },
+  "caida_test_a_bolivia": -0.08007266328272777,
+  "historia": [
+    {
+      "epoca": 1,
+      "perdida_train": 0.18793986564128914,
+      "val_iou_agua": 0.5298240656846352,
+      "val_f1": 0.692660126832984,
+      "val_precision": 0.8040471898485361,
+      "val_exhaustividad": 0.6083794950404562,
+      "val_exactitud": 0.9404744336274574,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.2745375952832242,
+      "val_perdida": 0.28766782364148774,
+      "val_confusion": {
+        "vp": 1361313,
+        "fp": 331763,
+        "fn": 876292,
+        "vn": 17725357
+      }
+    },
+    {
+      "epoca": 2,
+      "perdida_train": 0.1324283723277821,
+      "val_iou_agua": 0.5545898619482436,
+      "val_f1": 0.7134870431397518,
+      "val_precision": 0.792127161847955,
+      "val_exhaustividad": 0.6490511059816187,
+      "val_exactitud": 0.9425265432273657,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3033951687697562,
+      "val_perdida": 0.2794588857822204,
+      "val_confusion": {
+        "vp": 1452320,
+        "fp": 381123,
+        "fn": 785285,
+        "vn": 17675997
+      }
+    },
+    {
+      "epoca": 3,
+      "perdida_train": 0.11932074309665294,
+      "val_iou_agua": 0.5503830269504699,
+      "val_f1": 0.7099961975629303,
+      "val_precision": 0.7451539069829123,
+      "val_exhaustividad": 0.678006618683816,
+      "val_exactitud": 0.9389322594910746,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.3160891970144769,
+      "val_perdida": 0.27991565961516307,
+      "val_confusion": {
+        "vp": 1517111,
+        "fp": 518859,
+        "fn": 720494,
+        "vn": 17538261
+      }
+    },
+    {
+      "epoca": 4,
+      "perdida_train": 0.10396024256147586,
+      "val_iou_agua": 0.5479145953387224,
+      "val_f1": 0.7079390516617294,
+      "val_precision": 0.7597347508371004,
+      "val_exhaustividad": 0.6627550438973814,
+      "val_exactitud": 0.9397078304830443,
+      "val_pixeles_observados": 20294725,
+      "val_iou_promedio_por_chip": 0.309660911659748,
+      "val_perdida": 0.287628115897768,
+      "val_confusion": {
+        "vp": 1482984,
+        "fp": 468992,
+        "fn": 754621,
+        "vn": 17588128
+      }
+    }
+  ]
+}

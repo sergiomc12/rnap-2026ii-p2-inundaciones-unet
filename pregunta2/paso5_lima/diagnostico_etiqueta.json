@@ -1,0 +1,76 @@
+{
+  "umbral_oscuro_db": -15.0,
+  "firma_capas_lima": {
+    "Potential_Maximum_flood": {
+      "pixeles": 136104,
+      "mediana_vv_db": -9.16165542602539,
+      "media_vv_db": -8.654640197753906,
+      "p10_vv_db": -14.60560417175293,
+      "fraccion_oscura": 0.08692617410215718
+    },
+    "Riverbank": {
+      "pixeles": 74079,
+      "mediana_vv_db": -6.972887992858887,
+      "media_vv_db": -6.183941841125488,
+      "p10_vv_db": -11.790040016174316,
+      "fraccion_oscura": 0.013863578072058208
+    },
+    "WatrcrsA": {
+      "pixeles": 40172,
+      "mediana_vv_db": -11.696157455444336,
+      "media_vv_db": -12.008968353271484,
+      "p10_vv_db": -16.93027687072754,
+      "fraccion_oscura": 0.19433934083441204
+    },
+    "LakeresA": {
+      "pixeles": 1788,
+      "mediana_vv_db": -15.110994338989258,
+      "media_vv_db": -14.538238525390625,
+      "p10_vv_db": -19.843420028686523,
+      "fraccion_oscura": 0.5095078299776287
+    }
+  },
+  "firma_sen1floods11_bolivia": {
+    "agua": {
+      "pixeles": 451901,
+      "mediana_vv_db": -16.4721736907959,
+      "fraccion_oscura": 0.6539374774563456
+    },
+    "suelo": {
+      "pixeles": 2372533,
+      "mediana_vv_db": -8.359844207763672,
+      "fraccion_oscura": 0.02483590323085074
+    }
+  },
+  "otsu_mismo_codigo": {
+    "lima": {
+      "iou_agua": 0.010783796793437527,
+      "chips": 48
+    },
+    "bolivia": {
+      "iou_agua": 0.3530216813948336,
+      "chips": 15
+    },
+    "nota": "umbral de Otsu por chip sobre VV, la misma funcion en las dos regiones"
+  },
+  "otsu_precalculado_del_conjunto": {
+    "bolivia": {
+      "iou_agua": 0.6972798500203392
+    },
+    "nota": "S1OtsuLabelHand que trae Sen1Floods11: cadena con preprocesamiento propio, no comparable con la de arriba y sin equivalente para Lima"
+  },
+  "contraste_oscuro_lima": {
+    "umbral_db": -15.0,
+    "etiquetado_agua": {
+      "pixeles": 136104,
+      "mediana_vv_db": -9.16165542602539,
+      "fraccion_oscura": 0.08692617410215718
+    },
+    "etiquetado_suelo": {
+      "pixeles": 10744621,
+      "mediana_vv_db": -10.21718692779541,
+      "fraccion_oscura": 0.16250261409871972
+    },
+    "cociente_dentro_sobre_fuera": 0.5349216970094393
+  }
+}

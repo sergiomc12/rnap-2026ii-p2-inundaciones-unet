@@ -1,0 +1,100 @@
+% neurips.sty -- formato NeurIPS reimplementado
+%
+% La hoja de estilo oficial se distribuye desde el sitio de la conferencia y no
+% esta en CTAN; su descarga devolvio 403. Esto reproduce el formato que define
+% la guia de NeurIPS: papel carta, caja de texto de 5.5 x 9 pulgadas, cuerpo de
+% 10pt Times, titulo de 17pt, resumen sangrado a ambos lados, encabezados de
+% seccion de 12pt y referencias en cuerpo chico.
+%
+% Opciones:
+%   \usepackage[preprint]{neurips}   numera paginas y agrega el pie de preprint
+%   \usepackage[final]{neurips}      version de camara lista (por defecto)
+%   \usepackage[nonatbib]{neurips}   no carga natbib
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{neurips}[2026/10/03 Formato NeurIPS]
+
+\newif\if@neuripspreprint \@neuripspreprintfalse
+\newif\if@neuripsnatbib   \@neuripsnatbibtrue
+
+\DeclareOption{preprint}{\@neuripspreprinttrue}
+\DeclareOption{final}{\@neuripspreprintfalse}
+\DeclareOption{nonatbib}{\@neuripsnatbibfalse}
+\ProcessOptions\relax
+
+% --- Geometria: la caja de 5.5 x 9 pulgadas que define el formato ------------
+\RequirePackage[letterpaper,
+                textwidth=5.5in, textheight=9in,
+                top=1in, left=1.5in,
+                footskip=0.5in]{geometry}
+
+% --- Tipografia -------------------------------------------------------------
+\RequirePackage{times}
+\renewcommand{\normalsize}{\@setfontsize\normalsize\@xpt{11}}
+\normalsize
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5.5pt plus 2pt minus 1pt}
+
+% --- Bibliografia -----------------------------------------------------------
+\if@neuripsnatbib
+  \RequirePackage[numbers,sort&compress]{natbib}
+\fi
+
+% --- Numeracion de pagina: solo en preprint ---------------------------------
+\if@neuripspreprint
+  \pagestyle{plain}
+\else
+  \pagestyle{empty}
+\fi
+
+% --- Titulo -----------------------------------------------------------------
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\bfseries\fontsize{17}{20}\selectfont \@title\par}
+    \vskip 0.75em
+    {\normalsize \@author\par}
+    \vskip 0.5em
+    {\normalsize \@date\par}
+  \end{center}
+  \vskip 1em
+}
+
+% --- Resumen: sangrado a ambos lados, encabezado centrado -------------------
+\renewenvironment{abstract}{%
+  \vskip 0.5em
+  \begin{center}{\bfseries Abstract}\end{center}
+  \begin{list}{}{%
+    \setlength{\leftmargin}{0.5in}%
+    \setlength{\rightmargin}{0.5in}%
+    \setlength{\listparindent}{0pt}%
+  }\item[]\relax
+}{%
+  \end{list}\vskip 0.5em
+}
+
+% --- Encabezados de seccion -------------------------------------------------
+\RequirePackage{titlesec}
+\titleformat{\section}{\bfseries\fontsize{12}{14}\selectfont}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\bfseries\normalsize}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\bfseries\normalsize}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.5em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.2em}{0.4em}
+\titlespacing*{\subsubsection}{0pt}{1em}{0.3em}
+
+% --- Referencias en cuerpo chico, como pide el formato ----------------------
+\renewcommand{\bibsection}{\section*{\normalsize\bfseries References}}
+\AtBeginDocument{%
+  \let\neurips@oldbibliography\thebibliography
+  \renewcommand{\thebibliography}[1]{%
+    \small\neurips@oldbibliography{#1}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+  }%
+}
+
+% --- Figuras y tablas -------------------------------------------------------
+\RequirePackage[font=small,labelfont=bf,skip=6pt]{caption}
+\RequirePackage{booktabs}
+\RequirePackage{graphicx}
+
+\endinput

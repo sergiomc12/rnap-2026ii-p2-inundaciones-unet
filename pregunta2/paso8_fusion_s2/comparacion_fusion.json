@@ -1,0 +1,121 @@
+{
+  "remuestreos": 10000,
+  "semilla": 42,
+  "umbral_chip_nublado": 0.1,
+  "comparaciones": {
+    "fusion_vs_sar": {
+      "todos": {
+        "chips": 90,
+        "iou_a": 0.6808,
+        "iou_b": 0.8498,
+        "delta": 0.169,
+        "ic95": [
+          0.091,
+          0.2538
+        ],
+        "p_b_mejor": 1.0,
+        "significativa": true
+      },
+      "despejados": {
+        "chips": 74,
+        "iou_a": 0.6921,
+        "iou_b": 0.8689,
+        "delta": 0.1768,
+        "ic95": [
+          0.0913,
+          0.269
+        ],
+        "p_b_mejor": 0.9997,
+        "significativa": true
+      },
+      "nublados": {
+        "chips": 16,
+        "iou_a": 0.6103,
+        "iou_b": 0.7323,
+        "delta": 0.122,
+        "ic95": [
+          0.0186,
+          0.3405
+        ],
+        "p_b_mejor": 0.9927,
+        "significativa": true
+      }
+    },
+    "optico_vs_sar": {
+      "todos": {
+        "chips": 90,
+        "iou_a": 0.6808,
+        "iou_b": 0.8511,
+        "delta": 0.1704,
+        "ic95": [
+          0.0876,
+          0.2614
+        ],
+        "p_b_mejor": 1.0,
+        "significativa": true
+      },
+      "despejados": {
+        "chips": 74,
+        "iou_a": 0.6921,
+        "iou_b": 0.8753,
+        "delta": 0.1832,
+        "ic95": [
+          0.0937,
+          0.2808
+        ],
+        "p_b_mejor": 0.9997,
+        "significativa": true
+      },
+      "nublados": {
+        "chips": 16,
+        "iou_a": 0.6103,
+        "iou_b": 0.7041,
+        "delta": 0.0938,
+        "ic95": [
+          -0.0327,
+          0.3346
+        ],
+        "p_b_mejor": 0.9132,
+        "significativa": false
+      }
+    },
+    "fusion_vs_optico": {
+      "todos": {
+        "chips": 90,
+        "iou_a": 0.8511,
+        "iou_b": 0.8498,
+        "delta": -0.0013,
+        "ic95": [
+          -0.0122,
+          0.0093
+        ],
+        "p_b_mejor": 0.405,
+        "significativa": false
+      },
+      "despejados": {
+        "chips": 74,
+        "iou_a": 0.8753,
+        "iou_b": 0.8689,
+        "delta": -0.0063,
+        "ic95": [
+          -0.0168,
+          0.0007
+        ],
+        "p_b_mejor": 0.0515,
+        "significativa": false
+      },
+      "nublados": {
+        "chips": 16,
+        "iou_a": 0.7041,
+        "iou_b": 0.7323,
+        "delta": 0.0282,
+        "ic95": [
+          -0.002,
+          0.0567
+        ],
+        "p_b_mejor": 0.9616,
+        "significativa": false
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "granule_durante": "S1B_IW_GRDH_1SDV_20170317T103823_20170317T103848_004747_0084AE_040D",
+  "granule_antes": "S1B_IW_GRDH_1SDV_20170305T103823_20170305T103848_004572_007F86_4C55",
+  "chips": 48,
+  "centrado_por_escena": true,
+  "bandas": {
+    "VV": {
+      "pixeles_comparables": 10848275,
+      "mediana_cambio_db": {
+        "etiquetado_agua": 0.7773423194885254,
+        "etiquetado_suelo": -0.005642890930175781
+      },
+      "fraccion_que_cae_mas_de_3db": {
+        "etiquetado_agua": 0.1240649570137409,
+        "etiquetado_suelo": 0.06775247066774892
+      },
+      "umbral_fijo_3db": {
+        "umbral_db": -3.0,
+        "iou_agua": 0.01959002955212347
+      },
+      "cota_superior_barriendo_umbral": {
+        "iou_agua": 0.02418025605768574,
+        "umbral_db": -4.5
+      }
+    },
+    "VH": {
+      "pixeles_comparables": 10849367,
+      "mediana_cambio_db": {
+        "etiquetado_agua": 0.6096467971801758,
+        "etiquetado_suelo": -0.005832672119140625
+      },
+      "fraccion_que_cae_mas_de_3db": {
+        "etiquetado_agua": 0.12083737471710314,
+        "etiquetado_suelo": 0.10643197341615893
+      },
+      "umbral_fijo_3db": {
+        "umbral_db": -3.0,
+        "iou_agua": 0.012884629095835157
+      },
+      "cota_superior_barriendo_umbral": {
+        "iou_agua": 0.013760092814191757,
+        "umbral_db": -4.25
+      }
+    }
+  },
+  "referencia": {
+    "iou_unet_una_fecha": 0.0027841466727741493,
+    "nota": "de evaluacion_lima.json; la comparacion que importa es si la deteccion de cambio supera a la U-Net de una sola fecha"
+  }
+}

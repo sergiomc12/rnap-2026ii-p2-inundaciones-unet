@@ -1,0 +1,64 @@
+{
+  "conjuntos": [
+    "test"
+  ],
+  "chips": 90,
+  "solape_vv_de_referencia": 0.412,
+  "capas": [
+    {
+      "capa": "verde B3",
+      "mediana_agua": 0.1275,
+      "mediana_suelo": 0.1075,
+      "separacion": 0.02,
+      "coeficiente_solape": 0.7087,
+      "pixeles_agua": 2516071,
+      "pixeles_suelo": 17951262
+    },
+    {
+      "capa": "rojo B4",
+      "mediana_agua": 0.1075,
+      "mediana_suelo": 0.0825,
+      "separacion": 0.025,
+      "coeficiente_solape": 0.7995,
+      "pixeles_agua": 2516071,
+      "pixeles_suelo": 17951266
+    },
+    {
+      "capa": "NIR B8",
+      "mediana_agua": 0.0925,
+      "mediana_suelo": 0.2725,
+      "separacion": -0.18,
+      "coeficiente_solape": 0.1522,
+      "pixeles_agua": 2516071,
+      "pixeles_suelo": 17951261
+    },
+    {
+      "capa": "SWIR B11",
+      "mediana_agua": 0.0375,
+      "mediana_suelo": 0.1975,
+      "separacion": -0.16,
+      "coeficiente_solape": 0.1389,
+      "pixeles_agua": 2516071,
+      "pixeles_suelo": 17951254
+    },
+    {
+      "capa": "NDWI",
+      "mediana_agua": 0.165,
+      "mediana_suelo": -0.395,
+      "separacion": 0.56,
+      "coeficiente_solape": 0.1128,
+      "pixeles_agua": 2516071,
+      "pixeles_suelo": 17951266
+    },
+    {
+      "capa": "MNDWI",
+      "mediana_agua": 0.495,
+      "mediana_suelo": -0.285,
+      "separacion": 0.78,
+      "coeficiente_solape": 0.0937,
+      "pixeles_agua": 2516071,
+      "pixeles_suelo": 17951266
+    }
+  ],
+  "mejor_capa": "MNDWI"
+}

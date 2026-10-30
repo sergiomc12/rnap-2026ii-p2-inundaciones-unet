@@ -1,0 +1,45 @@
+# .gitignore de la Pregunta 2 (repo PUBLICO).
+#
+# Excluye artefactos regenerables y secretos; conserva el codigo, el informe,
+# los JSON de resultados y las figuras del informe. Patrones relativos a este
+# directorio (pregunta2/). El .env real esta en la raiz del repo y lo ignora el
+# .gitignore raiz; aqui se cubre tambien cualquier .env dentro de pregunta2.
+
+# --- Datos y descargas crudas de Sentinel/GeoTIFF (7.5 GB, regenerables) ---
+datos/
+data/
+*.tif
+*.tiff
+*.SAFE/
+*.zip
+
+# --- Cache intermedia -------------------------------------------------------
+cache/
+**/cache/
+
+# --- Pesos de los modelos (se regeneran entrenando) ------------------------
+*.pt
+*.pth
+corridas/**/*.pt
+corridas/**/*.pth
+
+# --- Entornos y bytecode ----------------------------------------------------
+.venv/
+venv/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# --- Notebooks ---------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --- Secretos: tokens de Earthdata/HyP3, credenciales ----------------------
+.env
+.env.*
+!.env.example
+
+# ---------------------------------------------------------------------------
+# SE VERSIONAN (no ignorar): *.py *.tex *.pdf *.bib *.sty,
+#   los JSON de resultados (paso*/**/*.json) y las figuras PNG del informe
+#   (paso9_informe/informe/figuras/*.png). Ninguno coincide con lo de arriba.
+# ---------------------------------------------------------------------------

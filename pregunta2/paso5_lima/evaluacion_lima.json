@@ -1,0 +1,34 @@
+{
+  "corrida": "a_solo_dorados",
+  "umbral": 0.5,
+  "remuestreos": 10000,
+  "lima": {
+    "chips": 48,
+    "iou_agua": 0.002783625838073626,
+    "f1": 0.005551797549041985,
+    "precision": 0.00294471127389909,
+    "exhaustividad": 0.048421890835384396,
+    "exactitud": 0.7996033197903651,
+    "pixeles_observados": 11957743
+  },
+  "test": {
+    "chips": 90,
+    "iou_agua": 0.6808235964204405,
+    "f1": 0.8101071377988194,
+    "precision": 0.811100854317548,
+    "exhaustividad": 0.8091158531951782,
+    "exactitud": 0.9525584350077668,
+    "pixeles_observados": 20517367
+  },
+  "brecha_lima_menos_test": {
+    "delta": -0.6780399705823669,
+    "ic95": [
+      -0.7609853153126015,
+      -0.5701702412866889
+    ],
+    "significativa": true,
+    "pareado": false
+  },
+  "granule": "S1B_IW_GRDH_1SDV_20170317T103823_20170317T103848_004747_0084AE_040D",
+  "limite": "etiquetas de EMSN038 derivadas de optico WorldView-2 del 18 y 21 de marzo contra escena SAR del 17: supervision debil propia, no verdad de terreno. Ademas el RTC de HyP3 aplica correccion radiometrica de terreno que el S1_GRD de GEE usado por Sen1Floods11 no aplica."
+}

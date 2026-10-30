@@ -1,0 +1,37 @@
+{
+  "corrida": "base",
+  "remuestreos": 10000,
+  "conjuntos": {
+    "test": {
+      "chips": 90,
+      "iou_unet": 0.6808173254743336,
+      "iou_otsu": 0.5458456321591642,
+      "delta": 0.13497169331516945,
+      "ic95": [
+        0.07053131114167166,
+        0.2090697678790915
+      ],
+      "significativa": true
+    },
+    "bolivia": {
+      "chips": 15,
+      "iou_unet": 0.609551816830124,
+      "iou_otsu": 0.6972798500203392,
+      "delta": -0.08772803319021516,
+      "ic95": [
+        -0.16546435954427124,
+        -0.022033407041623144
+      ],
+      "significativa": true
+    }
+  },
+  "caida_unet_test_a_bolivia": {
+    "delta": 0.07126550864420955,
+    "ic95": [
+      -0.08875579721454617,
+      0.30846256568684166
+    ],
+    "significativa": false,
+    "nota": "no pareado: son chips distintos, no hay correspondencia 1 a 1"
+  }
+}

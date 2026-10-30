@@ -1,0 +1,45 @@
+# Dependencias de la Pregunta 2 (U-Net / Sentinel-1 / Sen1Floods11).
+#
+# Versiones ancladas al entorno (.venv) con el que se produjeron los resultados
+# del informe. Instalar con:
+#
+#   python -m venv .venv
+#   .venv\Scripts\activate            # Linux/Mac: source .venv/bin/activate
+#   pip install -r pregunta2/requirements.txt
+#   python pregunta2/ejecutar_todo.py
+#
+# --- PyTorch (la U-Net, paso2/paso3/paso8) -------------------------------
+# En CPU estas versiones de PyPI bastan. Para la GPU de esta maquina
+# (NVIDIA RTX PRO 5000 Blackwell, sm_120) instalar desde el indice CUDA, o
+# torch.cuda.is_available() dara False:
+#   pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu128
+torch>=2.0
+torchvision>=0.15
+
+# --- Numerico y lectura de datos -----------------------------------------
+numpy==2.5.4
+pandas==3.1.0
+
+# --- Geoespacial: GeoTIFF, grillas, reproyeccion (paso1/paso4/paso5) ------
+rasterio==1.5.2
+geopandas==1.2.0
+shapely==2.2.0
+pyproj==3.8.0            # CRS/reproyeccion; dependencia de rasterio/geopandas
+affine==3.0.1           # transform de los GeoTIFF; dependencia de rasterio
+
+# --- Imagen, OCR de histogramas, figuras (paso6/paso7) --------------------
+scikit-image==0.26.0
+scikit-learn==1.9.1     # presente en el entorno de resultados
+scipy==1.18.1           # dependencia de scikit-image
+pillow==13.0.0
+matplotlib==3.11.2
+
+# --- Descarga de la escena Sentinel-1 de Lima (paso5, ASF/HyP3) -----------
+# Requieren un Earthdata Login gratuito en .env (TOKEN_HYP3).
+asf-search==14.1.0
+hyp3-sdk==7.7.8
+requests==2.34.2        # red; dependencia de asf-search/hyp3-sdk
+tqdm==4.70.1            # barras de progreso de descarga
+
+# --- Compilacion y verificacion del informe (paso9) -----------------------
+pypdf==6.21.3           # mide donde termina el cuerpo del PDF

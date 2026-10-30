@@ -1,0 +1,93 @@
+[
+  {
+    "corrida": "a_solo_dorados",
+    "factor": "supervision",
+    "chips_entrenamiento": 252,
+    "epocas": 60,
+    "minutos": 10.53,
+    "iou_test": 0.6808141650954996,
+    "iou_test_por_chip": 0.4177935981793949,
+    "iou_bolivia": 0.609566779401559,
+    "iou_bolivia_por_chip": 0.3757558558124968,
+    "otsu_test": 0.5458456321591642,
+    "otsu_bolivia": 0.6972798500203392
+  },
+  {
+    "corrida": "a_debiles_1000",
+    "factor": "supervision",
+    "chips_entrenamiento": 1252,
+    "epocas": 12,
+    "minutos": 9.58,
+    "iou_test": 0.5987251614224474,
+    "iou_test_por_chip": 0.3237081981969477,
+    "iou_bolivia": 0.6678225051639556,
+    "iou_bolivia_por_chip": 0.38100651545756287,
+    "otsu_test": 0.5458456321591642,
+    "otsu_bolivia": 0.6972798500203392
+  },
+  {
+    "corrida": "a_debiles_todos",
+    "factor": "supervision",
+    "chips_entrenamiento": 4412,
+    "epocas": 4,
+    "minutos": 11.03,
+    "iou_test": 0.5870970380173601,
+    "iou_test_por_chip": 0.3089898114185313,
+    "iou_bolivia": 0.6671697013000879,
+    "iou_bolivia_por_chip": 0.40574172517526363,
+    "otsu_test": 0.5458456321591642,
+    "otsu_bolivia": 0.6972798500203392
+  },
+  {
+    "corrida": "b_bce",
+    "factor": "perdida",
+    "chips_entrenamiento": 252,
+    "epocas": 60,
+    "minutos": 9.45,
+    "iou_test": 0.6692109367667001,
+    "iou_test_por_chip": 0.3949558272019695,
+    "iou_bolivia": 0.6343427267926299,
+    "iou_bolivia_por_chip": 0.3931086233589079,
+    "otsu_test": 0.5458456321591642,
+    "otsu_bolivia": 0.6972798500203392
+  },
+  {
+    "corrida": "b_dice",
+    "factor": "perdida",
+    "chips_entrenamiento": 252,
+    "epocas": 60,
+    "minutos": 10.39,
+    "iou_test": 0.6749140118447217,
+    "iou_test_por_chip": 0.40879387189055594,
+    "iou_bolivia": 0.6042676424079726,
+    "iou_bolivia_por_chip": 0.37602835818296954,
+    "otsu_test": 0.5458456321591642,
+    "otsu_bolivia": 0.6972798500203392
+  },
+  {
+    "corrida": "c_somera",
+    "factor": "profundidad",
+    "chips_entrenamiento": 252,
+    "epocas": 60,
+    "minutos": 8.09,
+    "iou_test": 0.6540479333611493,
+    "iou_test_por_chip": 0.40699926994221886,
+    "iou_bolivia": 0.676133998803832,
+    "iou_bolivia_por_chip": 0.43087791270077364,
+    "otsu_test": 0.5458456321591642,
+    "otsu_bolivia": 0.6972798500203392
+  },
+  {
+    "corrida": "c_profunda",
+    "factor": "profundidad",
+    "chips_entrenamiento": 252,
+    "epocas": 60,
+    "minutos": 9.15,
+    "iou_test": 0.6710837645660748,
+    "iou_test_por_chip": 0.4099928656622974,
+    "iou_bolivia": 0.6525824,
+    "iou_bolivia_por_chip": 0.4007518149136962,
+    "otsu_test": 0.5458456321591642,
+    "otsu_bolivia": 0.6972798500203392
+  }
+]
