@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex informe"] 1793390855.63686 "informe.aux" "informe.bbl" "informe" 1793390857.34816 0
+["bibtex informe"] 1793401205.02269 "informe.aux" "informe.bbl" "informe" 1793401206.79227 0
   "./referencias.bib" 1791560460.93197 4347 04cf83dabdf6509dda536f0a170b0370 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/bibtex/bst/natbib/plainnat.bst" 1284455456 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "informe.aux" 1793390856.76513 13735 24b82f0901178c953d24673da5fa77eb "pdflatex"
+  "informe.aux" 1793401206.20304 13801 114352672db09a9e0db02a1b9b483ef2 "pdflatex"
   (generated)
   "informe.bbl"
   "informe.blg"
   (rewritten before read)
-["pdflatex"] 1793390855.85499 "informe.tex" "informe.pdf" "informe" 1793390857.3487 0
-  "C:/Users/odt054/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1792288897.3236 82507 a9eef8696c92627b87e9975edea03b2a ""
+["pdflatex"] 1793401205.22358 "informe.tex" "informe.pdf" "informe" 1793401206.7928 0
+  "C:/Users/odt054/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1793400770.30693 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/odt054/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1785516683.8828 13333971 47469909e726512d2e00df5029664a05 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 1194fb36dfcb11d9ae9802f2b00b60a3 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -47,10 +47,8 @@
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb" 1247596667 36094 798f80770b3b148ceedd006d487db67c ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1247596667 32734 69e00a6b65cedb993666e42eedb3d48f ""
-  "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1247596666 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1247596666 32716 08e384dc442464e7285e891af9f45947 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1247596666 32442 c975af247b6702f7ca0c299af3616b80 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb" 1136846148 45758 19968a0990191524e34e1994d4a31cb6 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb" 1136871348 44729 811d6c62865936705a31c797a1d5dada ""
@@ -99,6 +97,7 @@
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty" 1696169587 72619 ee90b6612147680fd73c3b1406a74245 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1623003186 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/etoolbox/etoolbox.sty" 1759409308 46885 8953c67ffba03252c6090aa19568b8ba ""
+  "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty" 1469023953 6916 f35860e0302c70cb81cb70b0a7937693 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg" 1773583286 1083 f69f5eb2d8e249286c59dd1340122e59 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1773583286 41904 7711079366884e0d15963c9d40019853 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.cfg" 1465894292 1224 978390e9c2234eab29404bc21b268d1e ""
@@ -133,12 +132,14 @@
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/units/nicefrac.sty" 1469029150 4163 98f285ced1c61c25144faeaf509fbad0 ""
   "C:/Users/odt054/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "figuras/etiqueta_lima.png" 1793135496.78566 556289 6be9b28a45deea5b52581787c3365ed5 ""
-  "figuras/fallo_especular.png" 1791560437.9091 367992 ef6d29a98f219f904361ec2d918f0c0e ""
+  "figuras/modo1_solape.png" 1793399747.35906 465399 f5d036754aa2edd292272cea921c211f ""
+  "figuras/modo2_especular.png" 1793399747.38558 367992 ef6d29a98f219f904361ec2d918f0c0e ""
+  "figuras/modo3_agua_brillante.png" 1793399747.40644 543005 467310b9ae11a2906b655c04561e670b ""
   "figuras/separabilidad_vv.png" 1791560437.88608 97353 911115bb60952782b9413a68256de131 ""
-  "informe.aux" 1793390856.76513 13735 24b82f0901178c953d24673da5fa77eb "pdflatex"
-  "informe.bbl" 1793390855.80841 4120 c38fb1fb9fdc186e7083eacff17a93b9 "bibtex informe"
-  "informe.out" 1793390856.76663 3774 e9d9f48d25de744abe039d964c3356cd "pdflatex"
-  "informe.tex" 1793390555.16869 42299 1f91c3114c914002ec67bfb330cf802f ""
+  "informe.aux" 1793401206.20304 13801 114352672db09a9e0db02a1b9b483ef2 "pdflatex"
+  "informe.bbl" 1793401205.17475 4120 c38fb1fb9fdc186e7083eacff17a93b9 "bibtex informe"
+  "informe.out" 1793401206.20404 3774 e9d9f48d25de744abe039d964c3356cd "pdflatex"
+  "informe.tex" 1793401197.13571 40828 f344f6d490eb50cbc97ba5a37f3871cc ""
   "neurips.sty" 1791560437.86074 3472 2f803d0b67af18c15fb9c54956af8d17 ""
   (generated)
   "informe.aux"

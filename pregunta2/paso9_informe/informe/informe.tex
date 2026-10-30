@@ -16,7 +16,10 @@
 \usepackage{nicefrac}
 \usepackage{microtype}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{natbib}
+% neurips.sty fija el titulo de la bibliografia en "References"; se traduce aqui.
+\renewcommand{\bibsection}{\section*{\normalsize\bfseries Referencias}}
 
 % --- Ubicacion de flotantes -------------------------------------------
 % Mas margen para que las tablas compartan pagina con el texto en vez de
@@ -33,17 +36,17 @@
 \setlength{\intextsep}{9pt plus 2pt minus 2pt}
 \setcounter{totalnumber}{4}
 
-\title{Mapeo de inundaciones a partir de radar Sentinel-1:\\
-       una U-Net propia, y por qué pierde contra un umbral clásico\\
-       en terreno desconocido}
+\title{Segmentación de inundaciones en Sentinel-1 con U-Net:\\
+       supervisión débil, generalización geográfica y fusión con Sentinel-2}
 
 \author{%
-  Anónimo 1 \quad Anónimo 2 \quad Anónimo 3 \quad Anónimo 4 \quad Anónimo 5 \\
-  Grupo de Redes Neuronales y Aprendizaje Profundo \\
+  Flavio César Amayo Gamboa \quad Gustavo Adolfo Huarcaya Delgado \\
+  Jhordy Joel Maximiliano Cusi \quad Sergio Mondragon Contreras \\
   Facultad de Ingeniería Industrial y de Sistemas \\
-  Universidad Nacional de Ingeniería \\
-  \texttt{2026-II} \\
+  Universidad Nacional de Ingeniería
 }
+
+\date{31 de octubre de 2026}
 
 \begin{document}
 
@@ -55,21 +58,20 @@ en imágenes SAR de Sentinel-1 sobre Sen1Floods11. Dentro de distribución el
 modelo alcanza IoU 0.681 y supera a la umbralización de Otsu por $+0.135$, con
 intervalo de confianza que no cruza cero. En la región geográfica retenida,
 Bolivia, el orden se invierte: Otsu gana por $+0.088$, también de forma
-significativa. Cuatro resultados contradicen expectativas razonables de partida.
+significativa. Los resultados principales son cuatro.
 Primero, agregar los chips de etiqueta débil empeora la IoU de 0.681 a 0.587:
-son unos 4\,160 chips (se excluyen los 224 bolivianos del conjunto débil) que
-llevan el entrenamiento a 4\,412, diecisiete veces más datos. Segundo, el
+llevan el entrenamiento a 4\,412 chips, diecisiete veces más datos. Segundo, el
 análisis de fallos muestra que el 99.8\% de los falsos positivos y el 96.5\% de
-los negativos son físicamente irresolubles con VV y VH: las densidades de
+los negativos se concentran donde VV no separa agua de suelo: las densidades de
 retrodispersión de agua y suelo se solapan un 41.2\%, y los errores del modelo
 caen en esa zona. Tercero, fusionar Sentinel-2 sube la IoU a 0.850 ($+0.169$,
 significativo), pero la fusión no le gana al óptico solo; el radar solo vuelve a
 pesar bajo nube, donde con 16 chips nublados la diferencia no se puede afirmar.
-Ningún chip del conjunto supera el 42.2\% de nubosidad, de modo que el régimen
-operativo que motiva usar radar queda fuera de lo medido. Cuarto, sobre la
+Cuarto, sobre la
 región peruana construida para este trabajo el modelo cae a IoU 0.003, pero la
-causa no es falta de generalización: la etiqueta oficial de Copernicus marca
-llanura inundable y no superficie de agua, y su retrodispersión mediana ($-9.2$
+causa no es falta de generalización: la etiqueta oficial de Copernicus marca la
+extensión máxima de la inundación y no la superficie de agua visible en SAR, y su
+retrodispersión mediana ($-9.2$
 dB) se parece al suelo de Sen1Floods11 ($-8.4$) y no a su agua ($-16.5$).
 \end{abstract}
 
@@ -109,7 +111,7 @@ codificador perdió al submuestrear. Esa combinación sigue siendo la referencia
 en segmentación con pocos datos anotados, que es el régimen de este
 problema: 252 chips de entrenamiento. Variantes posteriores agregan compuertas
 de atención sobre las conexiones de salto \citep{oktay2018attention} o las
-anidan en varias escalas \citep{zhou2018unetpp}; acá se implementa la
+anidan en varias escalas \citep{zhou2018unetpp}; aquí se implementa la
 formulación original y se ablaciona la profundidad, por las razones de la
 Sección~\ref{sec:ablacion}.
 
@@ -117,14 +119,13 @@ Sección~\ref{sec:ablacion}.
 El método clásico es umbralizar la retrodispersión: el agua, al ser una
 superficie lisa, refleja el pulso lejos del satélite y aparece oscura. La
 umbralización de Otsu \citep{otsu1979threshold} elige el corte que maximiza la
-varianza entre las dos clases, recalculándolo para cada escena. Esa
-propiedad, que parece una limitación frente a un modelo aprendido, resulta
-ser su ventaja decisiva fuera de distribución (Sección~\ref{sec:generalizacion}).
+varianza entre las dos clases, recalculándolo para cada escena. Esa recalibración por escena explica su
+ventaja fuera de distribución (Sección~\ref{sec:generalizacion}).
 Sen1Floods11 usa Otsu para generar sus etiquetas débiles.
 
 \paragraph{Pérdidas para clases desbalanceadas.}
 El agua ocupa el 9.5\% de los píxeles etiquetados del conjunto de entrenamiento.
-La entropía cruzada sola premia predecir «no agua» en todo; el coeficiente de
+La entropía cruzada sola premia predecir ``no agua'' en todo; el coeficiente de
 Dice \citep{milletari2016vnet} optimiza directamente el solape entre predicción
 y verdad, y es insensible al tamaño del fondo. Acá se evalúan las dos y su
 combinación (Sección~\ref{sec:ablacion}).
@@ -135,12 +136,6 @@ Para el bono se usan dos índices normalizados clásicos: NDWI
 MNDWI \citep{xu2006mndwi}, que reemplaza el NIR por el SWIR y es más robusto en
 zona urbana. Ambos se calculan sobre las bandas de Sentinel-2
 \citep{drusch2012sentinel2} que Sen1Floods11 distribuye emparejadas con el SAR.
-
-\paragraph{Inferencia con muestras chicas.}
-Con 90 chips de prueba y 15 de Bolivia, una diferencia de IoU puede ser ruido de
-muestreo. Todas las comparaciones de este informe se acompañan de un intervalo
-por \emph{bootstrap} \citep{efron1994bootstrap} pareado sobre chips, y
-las que no lo superan se declaran como no afirmables en vez de reportarse.
 
 % ============================================================================
 \section{Conjunto de datos}
@@ -153,7 +148,7 @@ Sentinel-2 de 13 bandas.
 
 La etiqueta dorada tiene tres valores: \texttt{1} agua, \texttt{0} no agua y
 \texttt{-1} sin dato. El $-1$ no es un detalle de formato: marca los
-píxeles que el anotador no pudo etiquetar, y tratarlo como «no agua» inventaría
+píxeles que el anotador no pudo etiquetar, y tratarlo como ``no agua'' inventaría
 supervisión negativa donde no la hay. La pérdida de este trabajo lo enmascara
 explícitamente (Sección~\ref{sec:perdida}).
 
@@ -161,9 +156,8 @@ explícitamente (Sección~\ref{sec:perdida}).
 entrenamiento, 89 de validación y 90 de prueba, más los 15 de Bolivia,
 que los autores reservan como región geográfica independiente. Bolivia nunca se
 ve durante el entrenamiento, ni siquiera a través de los chips débiles: el
-conjunto débil incluye 224 chips bolivianos, y agregarlos «porque vienen del
-otro conjunto» sería una fuga silenciosa que invalidaría toda la
-Sección~\ref{sec:generalizacion}.
+conjunto débil incluye 224 chips bolivianos, y agregarlos ``porque vienen del
+otro conjunto'' sería una fuga de información hacia la región de prueba.
 
 \paragraph{Normalización, medida y congelada.} Las estadísticas se calculan
 solo sobre los 252 chips de entrenamiento: VV tiene media $-10.39$ dB
@@ -171,8 +165,7 @@ con desvío $4.04$, y VH media $-17.24$ con desvío $4.75$. Los valores se recor
 a los percentiles 0.1 y 99.9 antes de estandarizar, porque el mínimo observado
 ($-65.45$ dB en VV) es un artefacto aislado que aplastaría todo el rango útil.
 Calcular estas constantes sobre el conjunto completo filtraría información de
-prueba en la normalización, que es la forma más silenciosa de inflar un
-resultado.
+prueba en la normalización.
 
 % ============================================================================
 \section{Metodología}
@@ -187,16 +180,16 @@ conexiones de salto por concatenación, no por suma, porque la suma obligaría
 a que los dos tensores tengan la misma cantidad de canales y perdería la
 distinción entre el detalle del codificador y el contexto del decodificador.
 
-Tres decisiones merecen justificarse porque cambian el resultado.
+Decisiones de diseño:
 
-El relleno es «same», no «valid». La U-Net original recorta en cada
-convolución y su salida es más chica que la entrada. Acá la salida mide
+El relleno es ``same'', no ``valid''. La U-Net original recorta en cada
+convolución y su salida es más pequeña que la entrada. Aquí la salida mide
 $512\times512$, porque la máscara está georreferenciada: un recorte
 desplazaría la predicción respecto de las coordenadas del GeoTIFF y haría
 imposible compararla píxel a píxel con la etiqueta.
 
 La entrada son dos canales, VV y VH, no tres. Replicar a tres para
-reusar pesos de ImageNet no tiene sentido acá: no se parte de pesos
+reusar pesos de ImageNet no tiene sentido aquí: no se parte de pesos
 preentrenados, y la retrodispersión en decibelios no es una imagen RGB.
 
 La salida son logits, no probabilidades. La sigmoide se aplica dentro
@@ -221,32 +214,36 @@ enunciado es la IoU, así que es la que decide qué pesos se guardan.
 La aumentación son volteos y giros de 90 grados, nada más. Un recorte
 aleatorio rompería la alineación con la grilla georreferenciada, y una rotación
 que no sea múltiplo de 90 grados interpolaría la máscara e inventaría píxeles de
-agua en los bordes. Con 252 chips la aumentación hace falta, pero no a costa de
-ensuciar la etiqueta.
+agua en los bordes.
 
-Otsu se mide sobre los mismos píxeles observados que la U-Net. El
+Otsu se mide sobre los píxeles observados por ambos. El
 conjunto trae \texttt{S1Otsu\allowbreak LabelHand} para esta
 comparación; si Otsu se evaluara sobre todos los píxeles y la U-Net solo sobre
 los etiquetados, no sería una comparación entre pares.
 
-Bolivia se mira una sola vez, al final. Usarla para elegir
+Bolivia se evalúa una sola vez, al final. Usarla para elegir
 hiperparámetros la convertiría en una segunda validación y dejaría de medir
-generalización. Lo mismo vale para su exclusión del conjunto débil.
+generalización.
 
 \subsection{Protocolo de evaluación}
 
 Se reportan dos IoU porque miden cosas distintas y el enunciado pide la
 segunda. La \emph{agregada} suma los conteos de todos los chips y divide una vez:
-pesa más los chips con mucha agua. La \emph{promedio por chip}, la que usan los
+pesa más los chips con mucha agua, y es la que se usa como principal porque pesa
+cada píxel por igual y no se desestabiliza en los chips casi secos. La
+\emph{promedio por chip}, la que usan los
 autores del conjunto, da el mismo peso a cada chip y por eso es mucho más baja:
 hay chips casi secos donde la IoU es inestable. Un chip sin un solo píxel de agua
 ni predicho ni real tiene unión cero y se excluye del promedio, en vez de
-contarlo como 0 (castigaría un acierto) o como 1 (premiaría no hacer nada).
+contarlo como 0 o como 1.
 
-Todas las comparaciones usan bootstrap pareado sobre chips, nunca sobre
+Con 90 chips de prueba y 15 de Bolivia, una diferencia de IoU puede ser ruido de
+muestreo, así que todas las comparaciones usan \emph{bootstrap}
+\citep{efron1994bootstrap} pareado sobre chips, nunca sobre
 píxeles: los píxeles vecinos de un chip están correlacionados (un río cubre
 miles de píxeles que son una sola observación) y remuestrearlos daría
-intervalos absurdamente angostos.
+intervalos absurdamente angostos; las diferencias que no superan su intervalo se
+declaran no afirmables en vez de reportarse.
 
 % ============================================================================
 \section{Experimentos y resultados}
@@ -276,25 +273,23 @@ Bolivia (15) & 0.6096 & 0.3758 & 0.7574 & 0.7849 & 0.7319 & 0.33 M & 0.09 M & 0.
 \paragraph{La matriz de confusión, comentada.}
 La matriz está balanceada, y eso descarta que el umbral esté mal puesto. En
 prueba hay 483\,649 falsos positivos contra 489\,788 falsos negativos, una
-diferencia del 1.3\%, con precisión 0.811 y recall 0.809. Un modelo que
-sobre-segmenta tendría muchos más FP que FN y un recall inflado; uno que
-sub-segmenta, lo contrario. Acá no pasa ninguna de las dos, así que mover el
-umbral de 0.5 no mejoraría la IoU: solo cambiaría un tipo de error por el otro.
+diferencia del 1.3\%, con precisión 0.811 y recall 0.809. Están balanceados, así
+que mover el umbral de 0.5 no mejoraría la IoU: solo cambiaría un tipo de error
+por el otro.
 Eso obliga a buscar la causa del error en otra parte, que es lo que hace la
 Sección~\ref{sec:fallos}.
 
 La exactitud sería engañosa y por eso no se reporta como resultado. Los
 verdaderos negativos son 17.5 M contra 2.08 M de verdaderos positivos: predecir
-«no agua» en todos los píxeles daría 88\% de exactitud sin segmentar nada. Por
+``no agua'' en todos los píxeles daría 88\% de exactitud sin segmentar nada. Por
 eso la métrica del conjunto es la IoU de la clase agua, que ignora
 los verdaderos negativos por construcción.
 
 La brecha entre las dos IoU mide el desbalance entre chips. La
 agregada es 0.6808 y la promedio por chip 0.4178, una diferencia de 0.26. Como la
 agregada pesa cada píxel igual y la promedio pesa cada chip igual, esa brecha
-dice que el modelo anda bien en los chips con mucha agua y mal en los
-casi secos. En un chip con treinta píxeles de agua, errar diez
-cuesta un tercio de la IoU de ese chip y casi nada de la agregada. Los autores del
+dice que el modelo funciona bien en los chips con mucha agua y mal en los
+casi secos. Los autores del
 conjunto reportan la segunda, y por eso se reportan las dos.
 
 De prueba a Bolivia el modelo cae en recall, no en precisión: la precisión
@@ -331,25 +326,29 @@ c\_profunda & profundidad & 252 & 60 & 0.6711 & 0.6526 \\
 \end{tabular}
 \end{table}
 
-\paragraph{Agregar etiquetas débiles empeora, y mucho.}
+\paragraph{Etiquetas débiles.}
 Pasar de 252 a 4\,412 chips, diecisiete veces más datos, baja la IoU de
-prueba de 0.681 a 0.587. Es el resultado más contraintuitivo del trabajo. La
+prueba de 0.681 a 0.587. La
 explicación está en cómo se generaron esas etiquetas: por umbralización
 automática, es decir por el mismo método clásico contra el que se compara
 el modelo. Entrenar con ellas no le enseña a la red a segmentar agua; le enseña
 a imitar a Otsu, errores incluidos.
+
+En Bolivia, en cambio, los chips débiles \emph{mejoran} la IoU de 0.610 a
+0.668, porque empujan al modelo hacia el umbral de Otsu, que allí alcanza 0.697.
+Entre las siete corridas la correlación de rangos entre la IoU de prueba y la de
+Bolivia es $\rho=-0.786$: lo que ayuda dentro de distribución perjudica fuera.
+Para una región nueva conviene incluir los débiles; para los eventos ya vistos,
+solo los dorados.
 
 El presupuesto está igualado en pasos, no en épocas, y eso es lo que
 hace limpia la comparación: las tres corridas ven aproximadamente la misma
 cantidad de chips (15\,120, 15\,024 y 17\,648 respectivamente) porque las
 épocas se bajan a medida que el conjunto crece. Una época sobre 4\,412 chips
 serían diecisiete veces más actualizaciones que una sobre 252, y la tabla
-mediría \emph{cuánto entrenó} en vez de \emph{con qué datos}. Lo que queda
-establecido es más fuerte que «a igual cómputo»: a igual número de
-actualizaciones, los 252 chips dorados rinden más que 4\,412 mayormente
-ruidosos.
+mediría \emph{cuánto entrenó} en vez de \emph{con qué datos}.
 
-\paragraph{La función de pérdida apenas mueve la aguja.}
+\paragraph{La función de pérdida tiene poco efecto.}
 BCE sola da 0.6692, Dice sola 0.6749, y la combinación con peso 0.5, la
 configuración publicada, 0.6808. La diferencia entre los tres extremos es de
 0.012, del orden del ruido con 90 chips.
@@ -371,7 +370,7 @@ características de las regiones vistas.
 \small
 \begin{tabular}{lrrrcc}
 \toprule
-Conjunto & IoU U-Net & IoU Otsu & $\Delta$ & IC95\% de $\Delta$ & ¿Significativa? \\
+Conjunto & IoU U-Net & \shortstack[r]{IoU Otsu\\{\scriptsize(S1OtsuLabelHand)}} & $\Delta$ & IC95\% de $\Delta$ & ¿Significativa? \\
 \midrule
 Prueba (90 chips) & \textbf{0.6808} & 0.5458 & $+0.1350$ & $[+0.0705, +0.2091]$ & \textbf{sí} \\
 Bolivia (15 chips) & 0.6096 & \textbf{0.6973} & $-0.0877$ & $[-0.1655, -0.0220]$ & \textbf{sí} \\
@@ -381,9 +380,8 @@ Bolivia (15 chips) & 0.6096 & \textbf{0.6973} & $-0.0877$ & $[-0.1655, -0.0220]$
 
 El orden se invierte, y las dos diferencias son significativas. Dentro
 de distribución la U-Net le gana a Otsu por $+0.135$; en la región retenida
-\emph{pierde} por $-0.088$, con un intervalo que tampoco cruza cero. No es que el
-modelo aprendido sea mejor y se degrade: en terreno desconocido es
-\emph{peor que el método clásico}.
+\emph{pierde} por $-0.088$, con un intervalo que tampoco cruza cero. En la
+región no vista, la U-Net queda por debajo de Otsu.
 
 La caída de la U-Net al pasar de prueba a Bolivia es $+0.0713$, con intervalo
 $[-0.0888, +0.3085]$ que sí cruza cero. Esa comparación no es
@@ -391,7 +389,7 @@ pareada (son chips distintos, sin correspondencia uno a uno) y con 15 chips
 bolivianos no alcanza para afirmarla. Se reporta igual, con su intervalo, en vez
 de mostrar solo la comparación que sí resulta significativa.
 
-\paragraph{Dos hipótesis sobre la causa, como pide el enunciado.}
+\paragraph{Dos hipótesis sobre la causa.}
 La primera es la recalibración por escena: Otsu elige su umbral en cada
 imagen, de modo que un corrimiento global del histograma (distinto ángulo de
 incidencia, distinta humedad del suelo, distinta rugosidad) no lo afecta,
@@ -399,37 +397,33 @@ mientras que la U-Net lleva su decisión aprendida de otras regiones. La segunda
 es la cobertura del suelo: los eventos de entrenamiento no incluyen el
 tipo de vegetación y relieve bolivianos, y la Sección~\ref{sec:fallos} muestra
 que la mayor parte del error cae donde las dos clases comparten
-retrodispersión, una zona cuya ubicación en el eje de decibelios depende
-de la escena.
+retrodispersión.
 
 \subsection{La región de prueba peruana}
 \label{sec:lima}
 
-El enunciado nombra Lima y autoriza Bolivia como respaldo. Se construyó la mitad
-de la región peruana que \emph{no} depende de Sentinel-1: la grilla de chips y la
-máscara de referencia.
+La región peruana se construye en dos partes: la grilla de chips con su máscara
+de referencia (EMSN038) y la escena Sentinel-1 del 17 de marzo de 2017 (HyP3).
 
 La etiqueta sale del geodatabase de EMSN038, capa
-\texttt{Potential\_Maximum\_flood}: 13 polígonos, 13.58 km\textsuperscript{2}. Que
-sean la delineación \emph{observada} y no un escenario hipotético lo confirma la
-capa \texttt{DamAssess\_A}, que evalúa daños sobre esos mismos polígonos, y no se
-evalúa daño sobre algo que no ocurrió.
+\texttt{Potential\_Maximum\_flood}: 13 polígonos, 13.58 km\textsuperscript{2}. Esta
+capa delimita la extensión máxima que alcanzó la inundación según las imágenes
+ópticas del 18 y 21 de marzo; \texttt{DamAssess\_A} evalúa daños sobre esos mismos
+polígonos.
 
 Se usan los 13 polígonos, no solo los 2 que quedan fuera del cauce. Los
 otros 11 son el río a altura máxima, verificado: coinciden con la capa
-\texttt{Riverbank}. Sen1Floods11 etiqueta \emph{agua}, no «inundación», y
+\texttt{Riverbank}. Sen1Floods11 etiqueta \emph{agua}, no ``inundación'', y
 dejar el cauce afuera crearía un desacuerdo de criterio con el entrenamiento
-que después se confundiría con un fallo de generalización. El razonamiento es
-correcto; la premisa de que el cauce \emph{se ve} como agua en SAR resultó
-falsa, y la Sección~\ref{sec:etiqueta} la mide.
+que después se confundiría con un fallo de generalización. La
+Sección~\ref{sec:etiqueta} muestra que el cauce no se ve como agua en SAR.
 
 Fuera de la huella de las imágenes post-evento, la etiqueta es $-1$. Solo
 dos de las seis huellas del producto son posteriores al evento, las WorldView-2 del
-18 y del 21 de marzo. Donde nadie miró, escribir 0 inventaría supervisión
-negativa sobre media Lima. La grilla se ancla a múltiplos exactos del
-paso de píxel de Sen1Floods11 ($8.983152841195215\times10^{-5}$ grados, 10 m en
-EPSG:4326) desde $(0,0)$ y no desde la esquina del área de interés, para que dos
-corridas sobre recortes distintos produzcan chips en las mismas coordenadas.
+18 y del 21 de marzo; donde nadie miró, escribir 0 inventaría supervisión
+negativa. La grilla se ancla a múltiplos exactos del paso de
+píxel de Sen1Floods11 (10 m en EPSG:4326) desde $(0,0)$, para que recortes
+distintos produzcan chips en las mismas coordenadas.
 
 La región queda en 58 chips de $512\times512$, 18 con algún píxel de
 agua y 40 enteramente secos, con el 89.7\% de los píxeles observados. Entre
@@ -442,7 +436,10 @@ La escena Sentinel-1 se obtuvo de HyP3 (ASF/NASA), no de Google Earth
 Engine. El servicio produce bajo demanda los mismos tres parámetros con los que
 se construyó Sen1Floods11 (\texttt{sigma0}, decibelios, 10 m), de modo que el
 producto es comparable sin montar una cadena de preprocesamiento propia, que
-habría metido un confundidor en el entregable que mide generalización.
+habría metido un confundidor en el entregable que mide generalización. Queda una
+diferencia: HyP3 aplica corrección radiométrica de terreno (aplana el relieve con
+un DEM) y el \texttt{COPERNICUS/S1\_GRD} de GEE con que se armó Sen1Floods11 no;
+en terreno plano es despreciable, pero en el valle del Rímac algo pesa.
 Granule \texttt{S1B\_IW\_GRDH\_1SDV\_20170317T103823}, path 171 descendente, un
 día antes de la delineación óptica. Cada chip se reproyecta a la grilla que
 \emph{ya} tiene su etiqueta (se lee su \texttt{transform} y su CRS y se
@@ -451,30 +448,28 @@ de que dos cálculos independientes coincidan. Diez de los 58 chips caen fuera d
 la franja y se descartan antes de medir: evaluarlos sumaría aciertos triviales
 sobre píxeles que nadie observó.
 
-El resultado es inequívoco, y no es el esperado: IoU 0.0028 contra 0.6808
+IoU 0.0028 contra 0.6808
 en prueba, una brecha de $-0.678$ con IC95\% $[-0.761, -0.570]$ (no pareado: son
 chips distintos). Un desplome de ese tamaño admite dos lecturas incompatibles
-(o el modelo no generaliza, o la etiqueta no marca lo que el modelo predice)
-y la Sección siguiente las separa en vez de elegir la cómoda.
+(o el modelo no generaliza, o la etiqueta no marca lo que el modelo predice).
+La sección siguiente evalúa ambas.
 
 \subsection{Por qué el desplome de Lima no mide generalización}
 \label{sec:etiqueta}
 
 Primero: la alineación es correcta, así que el 0.0028 no es un error de
-georreferenciación: la Figura~\ref{fig:etiqueta} lo muestra y la construcción lo
-garantiza por herencia de la grilla.
+georreferenciación: la Figura~\ref{fig:etiqueta} lo muestra.
 
 Segundo: Otsu también fracasa, y Otsu no aprende nada. Con la misma
 función sobre las dos regiones, el umbral por chip sobre VV da IoU 0.0108 en
 Lima contra 0.3530 en Bolivia: cae 33 veces. Como Otsu recalibra dentro de cada
-imagen y no arrastra nada aprendido, un fallo suyo no puede atribuirse al
-modelo, porque no hay modelo.\footnote{Ese 0.3530 es un Otsu ingenuo sobre VV, no el
+imagen y no arrastra nada aprendido, su fallo no puede deberse a falta de
+generalización.\footnote{Ese 0.3530 es un Otsu ingenuo sobre VV, no el
 \texttt{S1OtsuLabelHand} del Cuadro~\ref{tab:generalizacion} (0.6973 en Bolivia,
 con preprocesamiento propio). Se usa el ingenuo porque es el único que existe
-para Lima, y se aplica igual en ambas regiones para no mezclar la diferencia
-entre regiones con la diferencia entre implementaciones.}
+para Lima, y se aplica igual en ambas regiones.}
 
-Tercero, y decisivo: la etiqueta está anticorrelacionada con la señal.
+Tercero: la etiqueta está anticorrelacionada con la señal.
 Dentro de lo etiquetado agua, el 8.7\% de los píxeles está bajo $-15$ dB; fuera,
 el 16.3\%. Los píxeles oscuros son casi el doble de frecuentes \emph{fuera} del
 agua declarada que dentro. Ningún umbral ni modelo puede recuperar una etiqueta
@@ -513,23 +508,21 @@ agua es, si acaso, más brillante que lo etiquetado suelo.}
 \label{fig:etiqueta}
 \end{figure}
 
-\paragraph{La causa es física, y el cauce la delata.}
-El Cuadro~\ref{tab:firma} ordena las capas y la sorpresa está arriba: el
-\emph{cauce} es lo más brillante de todas, $-6.97$ dB, con apenas 1.4\% de
-píxeles oscuros. El Rímac de marzo de 2017 era un torrente de montaña turbulento
+\paragraph{Firma de radar del cauce.}
+El Cuadro~\ref{tab:firma} muestra que el \emph{cauce} es la capa más brillante de
+todas, $-6.97$ dB, con apenas 1.4\% de píxeles oscuros. El Rímac de marzo de 2017 era un torrente de montaña turbulento
 y cargado de sedimento en un cañón urbano, y una superficie rugosa retrodispersa
 como suelo; lo que el radar ve negro es el agua \emph{lisa}. La confirmación está
 en la última fila de Lima: \texttt{LakeresA}, lagunas de agua quieta, es la
-única que se acerca al agua dorada. El sensor funciona; la inundación no era agua
-lisa. En el vocabulario de la Sección~\ref{sec:fallos}, Lima es el modo 3, agua
+única que se acerca al agua dorada. En el vocabulario de la
+Sección~\ref{sec:fallos}, Lima es el modo 3, agua
 brillante que se ve como suelo, extendido a un evento entero: ahí
 pesaba el 2.5\% de los falsos negativos sobre 23.3 M de píxeles de Asia y África,
-acá domina la escena completa.
+aquí domina la escena completa.
 
 \paragraph{Tampoco la rescata la detección de cambio.}
-Queda una salida posible: quizá la inundación sea invisible para un modelo de
-\emph{una sola fecha} pero no para uno que compare con el antes, que es como
-Copernicus EMS mapea inundaciones con SAR. Se bajó la escena del 5 de
+Queda una salida: la detección de cambio, que es como Copernicus EMS mapea
+inundaciones con SAR. Se bajó la escena del 5 de
 marzo (mismo path, misma hora, doce días antes: mismo ángulo de incidencia
 píxel a píxel) y se midió. Centrando la diferencia por escena, dentro de lo
 etiquetado agua VV sube $+0.78$ dB mientras fuera no se mueve ($-0.01$).
@@ -540,22 +533,25 @@ de una fecha: el área señalada no se oscureció, se aclaró.
 
 \paragraph{Qué queda en pie.}
 No queda en pie leer el 0.0028 como medida de generalización: la
-etiqueta delimita la \emph{llanura potencialmente inundable} (evaluada después
-por \texttt{DamAssess\_A} para estimar daños), no la superficie de agua que el
-modelo predice, así que comparar ambas mide el desacuerdo entre dos
-definiciones. Bolivia sigue siendo el experimento de generalización válido.
-Sí queda en pie, y es el límite que el enunciado pide documentar,
-que un producto de mapeo rápido de Copernicus no sirve como verdad de terreno
-para SAR aunque describa la misma inundación, la misma semana y el mismo lugar:
-¿hasta dónde pudo llegar el agua? no es la pregunta que responde una etiqueta de
-Sen1Floods11, ¿qué píxel es agua? La distancia está medida acá en 7.3 dB.
+etiqueta marca la extensión máxima de la inundación, no la superficie de agua
+visible en SAR que el modelo predice, así que comparar ambas mide el desacuerdo
+entre dos definiciones. Bolivia sigue siendo el experimento de generalización
+válido. Sobre la brecha de Lima pesan varias hipótesis: la definición de la
+etiqueta (H1) y la firma turbulenta del cauce (H2), puestas a prueba con el
+Cuadro~\ref{tab:firma} y la detección de cambio; el desbalance de clases, 1.01\%
+frente a 9.51\% (H5), medido; y tres no medidas: el desfase temporal, el entorno
+urbano y el distinto procesamiento radiométrico (H3, H4, H6). Sí queda en pie, y es un límite que conviene
+documentar, que un producto de mapeo rápido de Copernicus no sirve como verdad de
+terreno para SAR aunque describa la misma inundación, la misma semana y el mismo
+lugar: ¿hasta dónde pudo llegar el agua? no es la pregunta que responde una
+etiqueta de Sen1Floods11, ¿qué píxel es agua? La diferencia de medianas es de
+7.3 dB.
 
 \subsection{Fallos característicos del SAR (entregable 5)}
 \label{sec:fallos}
 
-Elegir tres chips que se ven mal no contesta lo único que decide si vale la pena
-seguir entrenando: si el error es del modelo o del sensor. En vez de eso se
-construyen los histogramas de VV condicionados a la verdad, uno para agua y uno
+Para separar los errores del sensor de los del modelo se construyen los
+histogramas de VV condicionados a la verdad, uno para agua y uno
 para suelo, sobre los 23.3 M de píxeles observados de prueba y Bolivia, y se
 mide cuánto se solapan.
 
@@ -577,69 +573,67 @@ $-17.75$ a $-4.75$ dB.}
 \small
 \begin{tabular}{lrrl}
 \toprule
-Modo & \% de los FP & \% de los FN & Atribuible al \\
+Modo & \% de los FP & \% de los FN & Zona de VV \\
 \midrule
-1 --- solape irreducible & 75.5\% & 94.0\% & sensor \\
-2 --- seco y liso se ve como agua (especular) & 24.3\% & --- & sensor \\
-3 --- agua brillante se ve como suelo (viento, doble rebote) & --- & 2.5\% & sensor \\
-4 --- el error cae donde su propia clase domina & 0.2\% & 3.5\% & \textbf{modelo} \\
+1 --- solape irreducible & 75.5\% & 94.0\% & ambigua \\
+2 --- seco y liso se ve como agua (especular) & 24.3\% & --- & ambigua \\
+3 --- agua brillante se ve como suelo (viento, doble rebote) & --- & 2.5\% & ambigua \\
+4 --- el error cae donde su propia clase domina & 0.2\% & 3.5\% & \textbf{clara} \\
 \midrule
-\textbf{Atribuible al SENSOR} & \textbf{99.8\%} & \textbf{96.5\%} & \\
+\textbf{En zona ambigua de VV} & \textbf{99.8\%} & \textbf{96.5\%} & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Las medianas lo dicen directo: los falsos positivos tienen VV $-14.6$ dB, mucho
 más oscura que el suelo típico ($-9.4$), y los falsos negativos $-10.6$, mucho
-más brillante que el agua típica ($-17.4$). El modelo no se equivoca
-contra la evidencia: se equivoca con ella.
+más brillante que el agua típica ($-17.4$).
 
-\begin{figure}[!htbp]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.88\textwidth]{figuras/fallo_especular.png}
-\caption{El modo 2 en estado puro (\texttt{Pakistan\_70625}, IoU 0.058). La
-verdad es un canal fino; el modelo marca de rojo los campos secos de alrededor.
-El panel derecho muestra por qué: la distribución de los falsos positivos se
-superpone casi exactamente con la del agua acertada.}
+\includegraphics[width=0.60\textwidth]{figuras/modo1_solape.png}\\[1pt]
+\includegraphics[width=0.60\textwidth]{figuras/modo2_especular.png}\\[1pt]
+\includegraphics[width=0.60\textwidth]{figuras/modo3_agua_brillante.png}
+\caption{Un ejemplo de cada modo de fallo del sensor; en cada fila: VV en dB, la
+verdad, los errores (acierto de agua verde, falsos positivos rojo, falsos
+negativos azul) y el histograma de VV con la zona ambigua sombreada.
+\emph{Modo 1}, solape (\texttt{India\_399883}): el error cae en la zona gris.
+\emph{Modo 2}, especular (\texttt{Pakistan\_70625}): campos secos marcados como
+agua. \emph{Modo 3}, agua brillante como suelo (\texttt{Pakistan\_849790}): el
+agua turbulenta se pierde como falso negativo.}
 \label{fig:fallo}
 \end{figure}
 
 \paragraph{La comprobación de la cota.}
-Una cota mal calculada haría que todo el reparto anterior no signifique nada. El
-error de Bayes mirando solo VV (con las proporciones reales, donde el
+El error de Bayes mirando solo VV (con las proporciones reales, donde el
 agua es el 12.8\% de los píxeles) es 7.81\%, y el modelo comete 4.83\%.
-Está por debajo de la cota, que es lo que tiene que pasar:
-recibe VV \emph{y} VH y además ve el contexto espacial. Si hubiera quedado por
-encima de un umbral sobre una sola banda, el problema sería del modelo.
+Está por debajo de la cota, que es lo que tiene que pasar: recibe VV \emph{y} VH
+y además ve el contexto espacial.
 
 \paragraph{La sombra de radar, un fallo que este conjunto no muestra.}
 El enunciado nombra la sombra de radar entre los fallos característicos del SAR.
 Es un artefacto geométrico: donde el relieve bloquea el pulso, la ladera opuesta
-queda sin retorno y aparece negra, indistinguible del agua lisa; el escorzo
-sobre la ladera que mira al sensor es su contraparte. No figura entre los cuatro
-modos cuantificados porque Sen1Floods11 cubre sobre todo llanuras y deltas, donde
-la geometría apenas la produce, y porque las etiquetas doradas se trazaron sobre
-escenas ya corregidas por terreno. No se la inventa como modo para completar la
-lista. Donde sí pesaría es en relieve pronunciado como el cañón del Rímac, el
-mismo terreno de la región peruana (Sección~\ref{sec:lima}): una sombra sobre la
-ladera se leería como agua y un escorzo brillante escondería el cauce. Es una
-limitación del alcance del conjunto, no un fallo medido de este modelo.
+queda sin retorno y aparece negra, indistinguible del agua lisa. No figura entre
+los cuatro modos cuantificados porque Sen1Floods11 cubre sobre todo llanuras y
+deltas, donde la geometría apenas la produce, y porque las etiquetas doradas se
+trazaron sobre escenas ya corregidas por terreno. Donde sí pesaría es en relieve
+pronunciado como el cañón del Rímac, el mismo terreno de la región peruana
+(Sección~\ref{sec:lima}): una sombra sobre la ladera se leería como agua y un
+escorzo brillante escondería el cauce.
 
 \paragraph{Sensibilidad a los umbrales.}
-La zona ambigua depende de dos constantes. Barriendo 15 combinaciones, la
-atribución al sensor va del 85.6\% al 100\% en los falsos positivos y del 88.8\%
-al 99.1\% en los negativos. El reparto sí se mueve; lo que no se mueve es
-la conclusión: aun con el ajuste más conservador, la gran mayoría del error es
-física.
+Barriendo 15 combinaciones de las dos constantes que definen la zona ambigua, la
+fracción de error en esa zona va del 85.6\% al 100\% en los falsos positivos y
+del 88.8\% al 99.1\% en los negativos: el reparto se mueve, la conclusión no.
 
 \subsection{Fusión con Sentinel-2 (entregable 6, bono)}
 \label{sec:fusion}
 
-El resultado anterior deja al bono como el único camino con recorrido: si el
-radar no puede separar las clases, hay que agregar una banda donde sí se separen.
+Si el radar no separa las clases, una banda óptica puede hacerlo.
 Se entrena la misma U-Net tres veces (solo SAR, solo óptico, y los dos
 fusionados) sobre los mismos chips, la misma partición y la misma semilla; lo
-único que cambia son los canales de entrada. Los 446 chips dorados tienen las
+único que cambia son los canales de entrada. El modelo óptico usa las bandas B3,
+B4, B8 y B11 más los índices NDWI y MNDWI. Los 446 chips dorados tienen las
 tres piezas, así que no se pierde ninguno.
 
 \begin{table}[!htbp]
@@ -662,15 +656,15 @@ NIR B8 & 0.092 & 0.273 & 15.2\% & \textbf{MNDWI} & \textbf{0.495} & $\mathbf{-0.
 \end{table}
 
 MNDWI deja un 9.4\% de solape donde VV deja 41.2\%: lo reduce 4.4 veces.
-Esa fila explica todo lo que sigue. Dos observaciones que la tabla deja ver: el
+Dos observaciones que la tabla deja ver: el
 verde y el rojo por sí solos separan \emph{peor} que VV (70.9\% y 80.0\%), y el
 salto está en el infrarrojo, donde la física lo pone.
 
 \begin{table}[!htbp]
 \centering
 \caption{Bootstrap pareado sobre chips, 10\,000 remuestreos. Los 90 chips de
-prueba se parten en 74 despejados y 16 nublados (más del 10\% de píxeles
-brillantes en azul).}
+prueba se parten en 74 despejados y 16 nublados (más del 10\% de píxeles con
+reflectancia en azul B2 $>$ 0.25).}
 \label{tab:fusion}
 \small
 \begin{tabular}{llrcc}
@@ -692,68 +686,62 @@ fusión vs.\ óptico & todos & $-0.0013$ & $[-0.0122, +0.0093]$ & no \\
 \end{tabular}
 \end{table}
 
-Las IoU de prueba son 0.6808 (SAR), 0.8511 (óptico) y 0.8498 (fusión).
-La corrida de SAR reproduce el 0.6808 del resto del informe, lo que
-funciona como control de que este circuito mide lo mismo que el anterior.
+Las IoU de prueba son 0.6808 (SAR), 0.8511 (óptico) y 0.8498 (fusión); la corrida
+de SAR reproduce el 0.6808 del resto del informe.
 
 El bono funciona, pero la fusión no le gana al óptico solo. La mejora sobre
-el SAR es $+0.169$, la más grande de toda la pregunta, pero la diferencia entre
-fusión y óptico es $-0.0013$ con el intervalo cruzando cero. Con cielo despejado
-el radar no aporta nada que el óptico no tenga.
+el SAR es $+0.169$, pero la diferencia entre fusión y óptico es $-0.0013$ con el
+intervalo cruzando cero: con cielo despejado el radar no aporta nada que el óptico
+no tenga.
 
-Bajo nube el signo se invierte y solo la fusión aguanta. La ganancia del
-óptico solo sobre el SAR deja de ser significativa con nubes; la de la fusión
-sigue siéndolo. Y fusión contra óptico pasa de $-0.0063$ a $+0.0282$, con el
-intervalo rozando el cero por dos milésimas. Es donde la física dice
-que el radar tiene que aportar, pero con 16 chips nublados no se puede
-afirmar.
+Con nubes, solo la ganancia de la fusión sigue siendo significativa. Fusión
+contra óptico pasa de $-0.0063$ a $+0.0282$, con el intervalo rozando el cero por
+dos milésimas: es donde la física dice que el radar tiene que aportar, pero con
+16 chips nublados no se puede afirmar.
 
 % ============================================================================
 \section{Discusión crítica de las limitaciones}
 % ============================================================================
 
-\paragraph{Los chips casi no tienen nubes, y eso invalida cualquier lectura
-optimista del bono.}
+\paragraph{Pocos chips nublados.}
 Medido sobre los 90 de prueba: nubosidad mediana 0.2\%, 2 chips por
 encima del 25\% y ninguno por encima del 50\%. El conjunto dorado se eligió
 donde el óptico era etiquetable a mano, así que está sesgado hacia cielo
-despejado por construcción. Una inundación real viene con la tormenta que la
-causó, y para ese régimen de óptico ciego y SAR solo este experimento
-no contiene un solo chip.
+despejado. El régimen que motiva usar radar, óptico ciego y SAR solo, no tiene
+aquí un solo chip.
 
-\paragraph{Quince chips no alcanzan para la conclusión que más importa.}
+\paragraph{Una sola región retenida.}
 La inversión U-Net/Otsu en Bolivia es significativa, pero descansa en 15 chips de
 una sola región. No se puede distinguir si el modelo falla por la región
-\emph{boliviana} o por \emph{cualquier} región no vista. Hacen falta más regiones
-retenidas, y el conjunto no las ofrece particionadas.
+\emph{boliviana} o por \emph{cualquier} región no vista, y el conjunto no ofrece
+más regiones retenidas particionadas.
 
-\paragraph{La ablación de supervisión no dice cuál es el techo de los chips
-débiles.}
+\paragraph{Techo de los chips débiles.}
 El presupuesto está igualado en pasos, así que la comparación de \emph{qué datos}
-es limpia; lo que no se midió es qué pasaría con 4\,412 chips y las 60 épocas
-completas, diecisiete veces más cómputo. Una corrida larga sobre el conjunto
-débil podría acercarse a la dorada, nunca superarla, porque su techo es la
-calidad de Otsu, pero eso es conjetura, no resultado.
+es limpia; no se midió qué pasaría con 4\,412 chips y las 60 épocas completas,
+diecisiete veces más cómputo. Una corrida así no superaría a la dorada, cuyo
+techo es Otsu, pero eso es conjetura. Además, solo se probó concatenar las dos
+fuentes; no se probó preentrenar con débiles y ajustar con dorados, ni ponderar
+su pérdida. Las corridas de ablación usan una sola semilla y sin intervalo, así
+que las diferencias menores a $\sim$0.02 no se interpretan.
 
-\paragraph{La región peruana quedó construida y medida, pero no rinde una cifra
-de generalización.}
-Queda sin responder cuánto cae el modelo en Lima \emph{de verdad}: haría falta
-una delineación de agua trazada sobre la propia escena SAR del 17 de marzo, que
-el producto EMSN038 no provee. Hasta tenerla, la única región retenida con cifra
-válida sigue siendo Bolivia, con los 15 chips ya señalados como insuficientes.
+\paragraph{Lima sin cifra de generalización.}
+Queda sin responder cuánto cae el modelo en Lima: haría falta una delineación de
+agua trazada sobre la propia escena SAR del 17 de marzo, que EMSN038 no provee.
+La única región retenida con cifra válida sigue siendo Bolivia.
 
-\paragraph{No se midió qué tan lejos puede llegar la arquitectura.}
+\paragraph{Variantes de arquitectura.}
 Se ablacionó profundidad y pérdida, pero no se probaron las variantes que el
 enunciado menciona (Attention U-Net \citep{oktay2018attention}, U-Net++
-\citep{zhou2018unetpp}). Dado que la Sección~\ref{sec:fallos} atribuye al sensor
-el 99.8\% de los falsos positivos, el retorno esperado de esa búsqueda es bajo,
-pero eso es una predicción de este informe, no un resultado medido.
+\citep{zhou2018unetpp}). Dado que la Sección~\ref{sec:fallos} ubica el 99.8\% de
+los falsos positivos en la zona ambigua de VV, el retorno esperado de esa
+búsqueda es bajo, aunque es una predicción, no un resultado medido. La cota de
+Bayes de esa sección, además, se calculó solo sobre VV, no sobre VV y VH
+conjuntos.
 
 % ============================================================================
 \section{Conclusiones}
 % ============================================================================
-
-Cuatro de los resultados fueron en contra de lo que cabía esperar al empezar.
 
 Primero, más datos empeoran cuando la etiqueta la produjo el método que
 se quiere superar: multiplicar el conjunto por diecisiete con chips de
@@ -764,7 +752,7 @@ Segundo, el método clásico gana fuera de distribución, por $-0.088$ en
 Bolivia y de forma significativa. La ventaja de Otsu es la que parecía su
 limitación: recalcula su umbral en cada escena.
 
-Tercero, casi todo el error restante es del sensor, y eso condiciona
+Tercero, casi todo el error cae donde VV es ambiguo, y eso condiciona
 cómo leer lo demás: el 99.8\% de los falsos positivos cae donde las densidades de
 agua y suelo se solapan, y el modelo opera por debajo de la cota de Bayes de una
 sola banda. La fusión con Sentinel-2 sube la IoU a 0.850 porque MNDWI reduce ese
@@ -775,18 +763,18 @@ Cuarto, la etiqueta oficial de una inundación real no sirve como verdad
 de terreno para SAR. En la región peruana el modelo cae a IoU 0.003, pero Otsu
 cae con él, los píxeles oscuros abundan más fuera del agua declarada que dentro,
 y entre el antes y el durante la zona señalada se \emph{aclara}. La delineación
-de Copernicus marca llanura inundable, no superficie de agua.
+de Copernicus marca la extensión máxima de la inundación, no la superficie de
+agua visible en SAR.
 
-La vía de mejora no es arquitectónica: hacen falta chips con nubosidad realista
+La vía de mejora no es arquitectónica: hacen falta chips con nubosidad realista,
 para saber si la fusión sobrevive al caso que motiva usar radar, y delineaciones
-de agua trazadas sobre la propia escena SAR para poder medir generalización fuera
-del conjunto.
+de agua trazadas sobre la propia escena SAR para medir generalización.
 
 \section*{Reproducibilidad}
 Todo se reproduce con \texttt{python pregunta2/ejecutar\_todo.py}, que encadena
 las 20 etapas desde la descarga hasta este documento y salta las que ya tienen
-artefacto. Las pruebas unitarias fijan la pérdida enmascarada, el bootstrap
-pareado y el cálculo del solape.
+artefacto. El repositorio incluye pruebas unitarias en \texttt{tests/}, que el
+orquestador ejecuta, para el bootstrap pareado y el cálculo del solape.
 
 \bibliographystyle{plainnat}
 \bibliography{referencias}

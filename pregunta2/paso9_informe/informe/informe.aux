@@ -13,84 +13,83 @@
 \citation{zhou2018unetpp}
 \babel@aux{spanish}{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Motivación}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Trabajos relacionados}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Segmentación con codificador-decodificador.}{1}{paragraph*.1}\protected@file@percent }
 \citation{otsu1979threshold}
 \citation{milletari2016vnet}
 \citation{mcfeeters1996ndwi}
 \citation{xu2006mndwi}
 \citation{drusch2012sentinel2}
-\citation{efron1994bootstrap}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Trabajos relacionados}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Segmentación con codificador-decodificador.}{2}{paragraph*.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Detección de agua en SAR.}{2}{paragraph*.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Pérdidas para clases desbalanceadas.}{2}{paragraph*.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Índices ópticos de agua.}{2}{paragraph*.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Inferencia con muestras chicas.}{2}{paragraph*.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3}Conjunto de datos}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Partición.}{2}{paragraph*.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Normalización, medida y congelada.}{2}{paragraph*.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Metodología}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}La U-Net, escrita desde cero}{3}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Partición.}{2}{paragraph*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Normalización, medida y congelada.}{2}{paragraph*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Metodología}{2}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}La U-Net, escrita desde cero}{2}{subsection.4.1}\protected@file@percent }
+\citation{efron1994bootstrap}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}La pérdida enmascarada}{3}{subsection.4.2}\protected@file@percent }
 \newlabel{sec:perdida}{{4.2}{3}{La pérdida enmascarada}{subsection.4.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Cuatro decisiones del entrenamiento}{3}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Protocolo de evaluación}{3}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Experimentos y resultados}{4}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Evaluación en distribución (entregable 3)}{4}{subsection.5.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Desempeño de la mejor configuración sobre las tres particiones. La matriz de confusión es sobre píxeles observados, al umbral 0.5.}}{4}{table.caption.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experimentos y resultados}{3}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Evaluación en distribución (entregable 3)}{3}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{La matriz de confusión, comentada.}{3}{paragraph*.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Desempeño de la mejor configuración sobre las tres particiones. La matriz de confusión es sobre píxeles observados, al umbral 0.5.}}{4}{table.caption.7}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:distribucion}{{1}{4}{Desempeño de la mejor configuración sobre las tres particiones. La matriz de confusión es sobre píxeles observados, al umbral 0.5}{table.caption.8}{}}
-\@writefile{toc}{\contentsline {paragraph}{La matriz de confusión, comentada.}{4}{paragraph*.9}\protected@file@percent }
+\newlabel{tab:distribucion}{{1}{4}{Desempeño de la mejor configuración sobre las tres particiones. La matriz de confusión es sobre píxeles observados, al umbral 0.5}{table.caption.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Estudio de ablación (entregable 2)}{4}{subsection.5.2}\protected@file@percent }
 \newlabel{sec:ablacion}{{5.2}{4}{Estudio de ablación (entregable 2)}{subsection.5.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Las siete corridas de la ablación. Todas comparten semilla, partición y presupuesto de cómputo (\textasciitilde 10 minutos); las corridas con chips débiles usan menos épocas porque cada época recorre más datos.}}{4}{table.caption.10}\protected@file@percent }
-\newlabel{tab:ablacion}{{2}{4}{Las siete corridas de la ablación. Todas comparten semilla, partición y presupuesto de cómputo (\textasciitilde 10 minutos); las corridas con chips débiles usan menos épocas porque cada época recorre más datos}{table.caption.10}{}}
-\@writefile{toc}{\contentsline {paragraph}{Agregar etiquetas débiles empeora, y mucho.}{4}{paragraph*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{La función de pérdida apenas mueve la aguja.}{5}{paragraph*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{La profundidad tampoco, y en Bolivia se invierte.}{5}{paragraph*.13}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Las siete corridas de la ablación. Todas comparten semilla, partición y presupuesto de cómputo (\textasciitilde 10 minutos); las corridas con chips débiles usan menos épocas porque cada época recorre más datos.}}{4}{table.caption.9}\protected@file@percent }
+\newlabel{tab:ablacion}{{2}{4}{Las siete corridas de la ablación. Todas comparten semilla, partición y presupuesto de cómputo (\textasciitilde 10 minutos); las corridas con chips débiles usan menos épocas porque cada época recorre más datos}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Etiquetas débiles.}{4}{paragraph*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{La función de pérdida tiene poco efecto.}{5}{paragraph*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{La profundidad tampoco, y en Bolivia se invierte.}{5}{paragraph*.12}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Generalización geográfica (entregable 4)}{5}{subsection.5.3}\protected@file@percent }
 \newlabel{sec:generalizacion}{{5.3}{5}{Generalización geográfica (entregable 4)}{subsection.5.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces U-Net contra umbralización de Otsu, con bootstrap pareado sobre chips y 10\,000 remuestreos.}}{5}{table.caption.14}\protected@file@percent }
-\newlabel{tab:generalizacion}{{3}{5}{U-Net contra umbralización de Otsu, con bootstrap pareado sobre chips y 10\,000 remuestreos}{table.caption.14}{}}
-\@writefile{toc}{\contentsline {paragraph}{Dos hipótesis sobre la causa, como pide el enunciado.}{5}{paragraph*.15}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces U-Net contra umbralización de Otsu, con bootstrap pareado sobre chips y 10\,000 remuestreos.}}{5}{table.caption.13}\protected@file@percent }
+\newlabel{tab:generalizacion}{{3}{5}{U-Net contra umbralización de Otsu, con bootstrap pareado sobre chips y 10\,000 remuestreos}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {paragraph}{Dos hipótesis sobre la causa.}{5}{paragraph*.14}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}La región de prueba peruana}{5}{subsection.5.4}\protected@file@percent }
 \newlabel{sec:lima}{{5.4}{5}{La región de prueba peruana}{subsection.5.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Por qué el desplome de Lima no mide generalización}{6}{subsection.5.5}\protected@file@percent }
 \newlabel{sec:etiqueta}{{5.5}{6}{Por qué el desplome de Lima no mide generalización}{subsection.5.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Firma de radar de cada capa candidata del geodatabase, contra el agua y el suelo que el modelo sí aprendió. Ninguna capa de Lima se parece al agua; \texttt  {Potential\_Maximum\_flood} se parece al \emph  {suelo}.}}{6}{table.caption.16}\protected@file@percent }
-\newlabel{tab:firma}{{4}{6}{Firma de radar de cada capa candidata del geodatabase, contra el agua y el suelo que el modelo sí aprendió. Ninguna capa de Lima se parece al agua; \texttt {Potential\_Maximum\_flood} se parece al \emph {suelo}}{table.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \emph  {Izquierda}: el contorno de la etiqueta (rojo) sigue el cauce (la alineación es correcta), pero los píxeles oscuros (azul) están repartidos por toda la escena y no dentro del contorno. \emph  {Derecha}: las dos poblaciones de Lima se superponen entre sí y ninguna cae donde cae el agua dorada. Lo etiquetado agua es, si acaso, más brillante que lo etiquetado suelo.}}{7}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:etiqueta}{{1}{7}{\emph {Izquierda}: el contorno de la etiqueta (rojo) sigue el cauce (la alineación es correcta), pero los píxeles oscuros (azul) están repartidos por toda la escena y no dentro del contorno. \emph {Derecha}: las dos poblaciones de Lima se superponen entre sí y ninguna cae donde cae el agua dorada. Lo etiquetado agua es, si acaso, más brillante que lo etiquetado suelo}{figure.caption.17}{}}
-\@writefile{toc}{\contentsline {paragraph}{La causa es física, y el cauce la delata.}{7}{paragraph*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Tampoco la rescata la detección de cambio.}{7}{paragraph*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Qué queda en pie.}{7}{paragraph*.20}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Firma de radar de cada capa candidata del geodatabase, contra el agua y el suelo que el modelo sí aprendió. Ninguna capa de Lima se parece al agua; \texttt  {Potential\_Maximum\_flood} se parece al \emph  {suelo}.}}{6}{table.caption.15}\protected@file@percent }
+\newlabel{tab:firma}{{4}{6}{Firma de radar de cada capa candidata del geodatabase, contra el agua y el suelo que el modelo sí aprendió. Ninguna capa de Lima se parece al agua; \texttt {Potential\_Maximum\_flood} se parece al \emph {suelo}}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {paragraph}{Firma de radar del cauce.}{6}{paragraph*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tampoco la rescata la detección de cambio.}{6}{paragraph*.18}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \emph  {Izquierda}: el contorno de la etiqueta (rojo) sigue el cauce (la alineación es correcta), pero los píxeles oscuros (azul) están repartidos por toda la escena y no dentro del contorno. \emph  {Derecha}: las dos poblaciones de Lima se superponen entre sí y ninguna cae donde cae el agua dorada. Lo etiquetado agua es, si acaso, más brillante que lo etiquetado suelo.}}{7}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:etiqueta}{{1}{7}{\emph {Izquierda}: el contorno de la etiqueta (rojo) sigue el cauce (la alineación es correcta), pero los píxeles oscuros (azul) están repartidos por toda la escena y no dentro del contorno. \emph {Derecha}: las dos poblaciones de Lima se superponen entre sí y ninguna cae donde cae el agua dorada. Lo etiquetado agua es, si acaso, más brillante que lo etiquetado suelo}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {paragraph}{Qué queda en pie.}{7}{paragraph*.19}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Fallos característicos del SAR (entregable 5)}{7}{subsection.5.6}\protected@file@percent }
 \newlabel{sec:fallos}{{5.6}{7}{Fallos característicos del SAR (entregable 5)}{subsection.5.6}{}}
-\@writefile{toc}{\contentsline {paragraph}{La comprobación de la cota.}{7}{paragraph*.24}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \emph  {Arriba}: densidades de VV condicionadas a la verdad. El área negra es el solape, 41.2\% de la masa. La banda gris es la zona donde ninguna clase domina el bin. \emph  {Abajo}: dónde caen los errores del modelo. El 75.5\% de los falsos positivos y el 94\% de los negativos están dentro de esa zona.}}{8}{figure.caption.21}\protected@file@percent }
-\newlabel{fig:separabilidad}{{2}{8}{\emph {Arriba}: densidades de VV condicionadas a la verdad. El área negra es el solape, 41.2\% de la masa. La banda gris es la zona donde ninguna clase domina el bin. \emph {Abajo}: dónde caen los errores del modelo. El 75.5\% de los falsos positivos y el 94\% de los negativos están dentro de esa zona}{figure.caption.21}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Los cuatro modos de fallo, con su peso medido. La zona ambigua va de $-17.75$ a $-4.75$ dB.}}{8}{table.caption.22}\protected@file@percent }
-\newlabel{tab:fallos}{{5}{8}{Los cuatro modos de fallo, con su peso medido. La zona ambigua va de $-17.75$ a $-4.75$ dB}{table.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces El modo 2 en estado puro (\texttt  {Pakistan\_70625}, IoU 0.058). La verdad es un canal fino; el modelo marca de rojo los campos secos de alrededor. El panel derecho muestra por qué: la distribución de los falsos positivos se superpone casi exactamente con la del agua acertada.}}{8}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:fallo}{{3}{8}{El modo 2 en estado puro (\texttt {Pakistan\_70625}, IoU 0.058). La verdad es un canal fino; el modelo marca de rojo los campos secos de alrededor. El panel derecho muestra por qué: la distribución de los falsos positivos se superpone casi exactamente con la del agua acertada}{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {paragraph}{La sombra de radar, un fallo que este conjunto no muestra.}{8}{paragraph*.25}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Sensibilidad a los umbrales.}{9}{paragraph*.26}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Los cuatro modos de fallo, con su peso medido. La zona ambigua va de $-17.75$ a $-4.75$ dB.}}{7}{table.caption.21}\protected@file@percent }
+\newlabel{tab:fallos}{{5}{7}{Los cuatro modos de fallo, con su peso medido. La zona ambigua va de $-17.75$ a $-4.75$ dB}{table.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \emph  {Arriba}: densidades de VV condicionadas a la verdad. El área negra es el solape, 41.2\% de la masa. La banda gris es la zona donde ninguna clase domina el bin. \emph  {Abajo}: dónde caen los errores del modelo. El 75.5\% de los falsos positivos y el 94\% de los negativos están dentro de esa zona.}}{8}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:separabilidad}{{2}{8}{\emph {Arriba}: densidades de VV condicionadas a la verdad. El área negra es el solape, 41.2\% de la masa. La banda gris es la zona donde ninguna clase domina el bin. \emph {Abajo}: dónde caen los errores del modelo. El 75.5\% de los falsos positivos y el 94\% de los negativos están dentro de esa zona}{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Un ejemplo de cada modo de fallo del sensor; en cada fila: VV en dB, la verdad, los errores (acierto de agua verde, falsos positivos rojo, falsos negativos azul) y el histograma de VV con la zona ambigua sombreada. \emph  {Modo 1}, solape (\texttt  {India\_399883}): el error cae en la zona gris. \emph  {Modo 2}, especular (\texttt  {Pakistan\_70625}): campos secos marcados como agua. \emph  {Modo 3}, agua brillante como suelo (\texttt  {Pakistan\_849790}): el agua turbulenta se pierde como falso negativo.}}{8}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:fallo}{{3}{8}{Un ejemplo de cada modo de fallo del sensor; en cada fila: VV en dB, la verdad, los errores (acierto de agua verde, falsos positivos rojo, falsos negativos azul) y el histograma de VV con la zona ambigua sombreada. \emph {Modo 1}, solape (\texttt {India\_399883}): el error cae en la zona gris. \emph {Modo 2}, especular (\texttt {Pakistan\_70625}): campos secos marcados como agua. \emph {Modo 3}, agua brillante como suelo (\texttt {Pakistan\_849790}): el agua turbulenta se pierde como falso negativo}{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {paragraph}{La comprobación de la cota.}{8}{paragraph*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{La sombra de radar, un fallo que este conjunto no muestra.}{8}{paragraph*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sensibilidad a los umbrales.}{9}{paragraph*.25}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Fusión con Sentinel-2 (entregable 6, bono)}{9}{subsection.5.7}\protected@file@percent }
 \newlabel{sec:fusion}{{5.7}{9}{Fusión con Sentinel-2 (entregable 6, bono)}{subsection.5.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Separación de cada capa óptica, con el mismo coeficiente de solape que la Sección~\ref {sec:fallos} aplica a VV, sobre los 90 chips de prueba.}}{9}{table.caption.27}\protected@file@percent }
-\newlabel{tab:separacion}{{6}{9}{Separación de cada capa óptica, con el mismo coeficiente de solape que la Sección~\ref {sec:fallos} aplica a VV, sobre los 90 chips de prueba}{table.caption.27}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Bootstrap pareado sobre chips, 10\,000 remuestreos. Los 90 chips de prueba se parten en 74 despejados y 16 nublados (más del 10\% de píxeles brillantes en azul).}}{9}{table.caption.28}\protected@file@percent }
-\newlabel{tab:fusion}{{7}{9}{Bootstrap pareado sobre chips, 10\,000 remuestreos. Los 90 chips de prueba se parten en 74 despejados y 16 nublados (más del 10\% de píxeles brillantes en azul)}{table.caption.28}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Separación de cada capa óptica, con el mismo coeficiente de solape que la Sección~\ref {sec:fallos} aplica a VV, sobre los 90 chips de prueba.}}{9}{table.caption.26}\protected@file@percent }
+\newlabel{tab:separacion}{{6}{9}{Separación de cada capa óptica, con el mismo coeficiente de solape que la Sección~\ref {sec:fallos} aplica a VV, sobre los 90 chips de prueba}{table.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Bootstrap pareado sobre chips, 10\,000 remuestreos. Los 90 chips de prueba se parten en 74 despejados y 16 nublados (más del 10\% de píxeles con reflectancia en azul B2 $>$ 0.25).}}{9}{table.caption.27}\protected@file@percent }
+\newlabel{tab:fusion}{{7}{9}{Bootstrap pareado sobre chips, 10\,000 remuestreos. Los 90 chips de prueba se parten en 74 despejados y 16 nublados (más del 10\% de píxeles con reflectancia en azul B2 $>$ 0.25)}{table.caption.27}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}Discusión crítica de las limitaciones}{9}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Los chips casi no tienen nubes, y eso invalida cualquier lectura optimista del bono.}{9}{paragraph*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Pocos chips nublados.}{9}{paragraph*.28}\protected@file@percent }
 \citation{oktay2018attention}
 \citation{zhou2018unetpp}
 \bibstyle{plainnat}
 \bibdata{referencias}
 \bibcite{bonafilia2020sen1floods11}{{1}{2020}{{Bonafilia et~al.}}{{Bonafilia, Tellman, Anderson, and Issenberg}}}
-\@writefile{toc}{\contentsline {paragraph}{Quince chips no alcanzan para la conclusión que más importa.}{10}{paragraph*.30}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{La ablación de supervisión no dice cuál es el techo de los chips débiles.}{10}{paragraph*.31}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{La región peruana quedó construida y medida, pero no rinde una cifra de generalización.}{10}{paragraph*.32}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{No se midió qué tan lejos puede llegar la arquitectura.}{10}{paragraph*.33}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Una sola región retenida.}{10}{paragraph*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Techo de los chips débiles.}{10}{paragraph*.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Lima sin cifra de generalización.}{10}{paragraph*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Variantes de arquitectura.}{10}{paragraph*.32}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Conclusiones}{10}{section.7}\protected@file@percent }
 \bibcite{copernicus2017emsn038}{{2}{2017}{{Copernicus Emergency Management Service}}{{}}}
 \bibcite{drusch2012sentinel2}{{3}{2012}{{Drusch et~al.}}{{Drusch, Del~Bello, Carlier, Colin, Fernandez, Gascon, et~al.}}}

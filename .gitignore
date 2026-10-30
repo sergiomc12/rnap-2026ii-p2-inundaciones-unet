@@ -43,3 +43,5 @@ venv/
 #   los JSON de resultados (paso*/**/*.json) y las figuras PNG del informe
 #   (paso9_informe/informe/figuras/*.png). Ninguno coincide con lo de arriba.
 # ---------------------------------------------------------------------------
+
+*.docx

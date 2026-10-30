@@ -13,8 +13,8 @@
 # (NVIDIA RTX PRO 5000 Blackwell, sm_120) instalar desde el indice CUDA, o
 # torch.cuda.is_available() dara False:
 #   pip install --force-reinstall torch torchvision --index-url https://download.pytorch.org/whl/cu128
-torch>=2.0
-torchvision>=0.15
+torch==2.11.0
+torchvision==0.26.0
 
 # --- Numerico y lectura de datos -----------------------------------------
 numpy==2.5.4

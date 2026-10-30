@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.7.31)  30 OCT 2026 15:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.7.31)  30 OCT 2026 18:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -451,11 +451,18 @@ g
 File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
+) (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count322
+\float@exts=\toks31
+\float@box=\box57
+\@float@everytoks=\toks32
+\@floatcapt=\box58
 )
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pd
 ftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count322
+\l__color_backend_stack_int=\count323
 ) (informe.aux
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
@@ -464,24 +471,24 @@ Package babel Info: 'spanish' activates 'spanish' shorthands.
 )
 \openout1 = `informe.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -518,23 +525,24 @@ LaTeX Font Info:    ... okay on input line 48.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.m
 kii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count323
+\scratchcounter=\count324
 \scratchdimen=\dimen256
-\scratchbox=\box57
-\nofMPsegments=\count324
-\nofMParguments=\count325
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count326
+\scratchbox=\box59
+\nofMPsegments=\count325
+\nofMParguments=\count326
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count327
 \MPscratchDim=\dimen257
-\MPnumerator=\count327
-\makeMPintoPDFobject=\count328
-\everyMPtoPDFconversion=\toks32
+\MPnumerator=\count328
+\makeMPintoPDFobject=\count329
+\everyMPtoPDFconversion=\toks34
 )
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-
 base.sty
@@ -546,20 +554,20 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-LaTeX Info: Redefining \. on input line 48.
-LaTeX Info: Redefining \% on input line 48.
-Package hyperref Info: Link coloring OFF on input line 48.
+LaTeX Info: Redefining \. on input line 50.
+LaTeX Info: Redefining \% on input line 50.
+Package hyperref Info: Link coloring OFF on input line 50.
  (informe.out) (informe.out)
 \@outlinefile=\write3
 \openout3 = `informe.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 48.
-Package microtype Info: Applying patch `item' on input line 48.
-Package microtype Info: Applying patch `toc' on input line 48.
-Package microtype Info: Applying patch `eqnum' on input line 48.
-Package microtype Info: Applying patch `footnote' on input line 48.
-Package microtype Info: Applying patch `verbatim' on input line 48.
-LaTeX Info: Redefining \microtypesetup on input line 48.
+LaTeX Info: Redefining \microtypecontext on input line 50.
+Package microtype Info: Applying patch `item' on input line 50.
+Package microtype Info: Applying patch `toc' on input line 50.
+Package microtype Info: Applying patch `eqnum' on input line 50.
+Package microtype Info: Applying patch `footnote' on input line 50.
+Package microtype Info: Applying patch `verbatim' on input line 50.
+LaTeX Info: Redefining \microtypesetup on input line 50.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -574,22 +582,11 @@ Package microtype Info: No adjustment of character kerning.
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 51
-.
-
-(C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `pcr' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 57.
 
 
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -598,7 +595,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 57.
 
 
 (C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -610,37 +607,54 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 [1
 
 {C:/Users/odt054/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/odt
-054/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
-Overfull \hbox (5.87476pt too wide) in paragraph at lines 227--231
-[]\T1/ptm/m/n/10 (-20) Otsu se mi-de so-bre los mis-mos pí-xe-les ob-ser-va-dos
- que la U-Net. El con-jun-to trae \T1/pcr/m/n/10 S1OtsuLabelHand
- []
+054/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 14
+8.
 
+(C:\Users\odt054\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
-Overfull \hbox (27.9974pt too wide) in paragraph at lines 263--274
+[2]
+Overfull \hbox (27.9974pt too wide) in paragraph at lines 259--270
  [][] 
  []
 
 [3] [4] [5]
-<figuras/etiqueta_lima.png, id=159, 765.68163pt x 325.59537pt>
+<figuras/etiqueta_lima.png, id=157, 765.68163pt x 325.59537pt>
 File: figuras/etiqueta_lima.png Graphic file (type png)
 <use figuras/etiqueta_lima.png>
-Package pdftex.def Info: figuras/etiqueta_lima.png  used on input line 507.
+Package pdftex.def Info: figuras/etiqueta_lima.png  used on input line 501.
 (pdftex.def)             Requested size: 294.14107pt x 125.07886pt.
  [6]
-<figuras/separabilidad_vv.png, id=173, 642.60075pt x 496.85625pt>
+<figuras/separabilidad_vv.png, id=172, 642.60075pt x 496.85625pt>
 File: figuras/separabilidad_vv.png Graphic file (type png)
 <use figuras/separabilidad_vv.png>
-Package pdftex.def Info: figuras/separabilidad_vv.png  used on input line 564.
+Package pdftex.def Info: figuras/separabilidad_vv.png  used on input line 559.
 (pdftex.def)             Requested size: 246.43874pt x 190.54347pt.
-<figuras/fallo_especular.png, id=174, 1196.397pt x 314.703pt>
-File: figuras/fallo_especular.png Graphic file (type png)
-<use figuras/fallo_especular.png>
-Package pdftex.def Info: figuras/fallo_especular.png  used on input line 599.
-(pdftex.def)             Requested size: 349.78873pt x 92.01064pt.
+<figuras/modo1_solape.png, id=173, 1196.397pt x 314.703pt>
+File: figuras/modo1_solape.png Graphic file (type png)
+<use figuras/modo1_solape.png>
+Package pdftex.def Info: figuras/modo1_solape.png  used on input line 593.
+(pdftex.def)             Requested size: 238.49341pt x 62.73299pt.
+<figuras/modo2_especular.png, id=174, 1196.397pt x 314.703pt>
+File: figuras/modo2_especular.png Graphic file (type png)
+<use figuras/modo2_especular.png>
+Package pdftex.def Info: figuras/modo2_especular.png  used on input line 594.
+(pdftex.def)             Requested size: 238.49341pt x 62.73299pt.
+<figuras/modo3_agua_brillante.png, id=175, 1196.397pt x 314.703pt>
+File: figuras/modo3_agua_brillante.png Graphic file (type png)
+<use figuras/modo3_agua_brillante.png>
+Package pdftex.def Info: figuras/modo3_agua_brillante.png  used on input line 5
+95.
+(pdftex.def)             Requested size: 238.49341pt x 62.73299pt.
  [7 <./figuras/etiqueta_lima.png>] [8 <./figuras/separabilidad_vv.png> <./figur
-as/fallo_especular.png>] [9] (informe.bbl [10]) [11]
-(informe.aux
+as/modo1_solape.png> <./figuras/modo2_especular.png> <./figuras/modo3_agua_bril
+lante.png>] [9] (informe.bbl [10]) [11] (informe.aux
 LaTeX Info: Redefining \. on input line 14.
 LaTeX Info: Redefining \% on input line 14.
 )
@@ -652,32 +666,30 @@ Package rerunfilecheck Info: File `informe.out' has not changed.
 (rerunfilecheck)             Checksum: E9D9F48D25DE744ABE039D964C3356CD;3774.
  ) 
 Here is how much of TeX's memory you used:
- 16111 strings out of 467871
- 259385 string characters out of 5417892
- 718997 words of memory out of 5000000
- 44374 multiletter control sequences out of 15000+600000
- 683388 words of font info for 306 fonts, out of 8000000 for 9000
+ 16175 strings out of 467871
+ 260756 string characters out of 5417892
+ 720772 words of memory out of 5000000
+ 44442 multiletter control sequences out of 15000+600000
+ 683166 words of font info for 301 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1006b,617s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,1006b,617s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmbx9.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmmi10.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmmi9.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/odt054/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/odt054/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/odt054/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/odt054
-/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Us
-ers/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmsy9.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/cour
-ier/ucrr8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
-imes/utmb8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
-times/utmr8a.pfb><C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on informe.pdf (11 pages, 1272002 bytes).
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/odt054/AppData
+/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/odt0
+54/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/U
+sers/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C
+:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><
+C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb>
+<C:/Users/odt054/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pf
+b>
+Output written on informe.pdf (11 pages, 2314936 bytes).
 PDF statistics:
- 300 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 52384 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 293 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
+ 52394 words of extra memory for PDF output out of 61914 (max. 10000000)
 
