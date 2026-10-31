@@ -38,24 +38,53 @@ def _correr(orden: Sequence[str], directorio: pathlib.Path) -> int:
                           text=True, errors="replace").returncode
 
 
+def _secuencia_pdflatex(carpeta: pathlib.Path, nombre: str) -> None:
+    """pdflatex / bibtex / pdflatex x2, la secuencia clásica sin latexmk.
+
+    La primera pasada genera los .aux, bibtex resuelve las citas y las dos
+    siguientes fijan los números de referencia y el índice.
+    """
+    _correr(["pdflatex", "-interaction=nonstopmode", f"{nombre}.tex"], carpeta)
+    if shutil.which("bibtex"):
+        _correr(["bibtex", nombre], carpeta)
+    for _ in range(2):
+        _correr(["pdflatex", "-interaction=nonstopmode", f"{nombre}.tex"],
+                carpeta)
+
+
 def compilar(carpeta: pathlib.Path, nombre: str = "informe") -> bool:
-    """Compila y devuelve si el PDF quedó escrito."""
+    """Compila y devuelve si el PDF quedó escrito EN ESTA corrida.
+
+    No basta con que exista el .pdf: una corrida fallida deja intacto el de la
+    vez anterior, y darlo por bueno hace pasar por compilada una corrida que
+    nunca tocó el documento. El caso real: en MiKTeX sobre Windows sin Perl,
+    ``latexmk`` aborta de entrada sin llegar a invocar pdflatex, con lo que el
+    informe "compilaba" pero conservaba la versión anterior (p. ej. los autores
+    sin actualizar). Por eso se verifica el código de salida de latexmk —y se
+    cae a pdflatex directo si falló— y que el .pdf sea más nuevo que el arranque.
+    """
+    pdf = carpeta / f"{nombre}.pdf"
+    antes = pdf.stat().st_mtime if pdf.is_file() else 0.0
+
+    hecho = False
     if shutil.which("latexmk"):
-        _correr(["latexmk", "-pdf", "-interaction=nonstopmode",
-                 "-halt-on-error", f"{nombre}.tex"], carpeta)
-    elif shutil.which("pdflatex"):
-        # Tres pasadas: la primera genera los .aux, bibtex resuelve las citas,
-        # las dos siguientes fijan los números de referencia y el índice.
-        _correr(["pdflatex", "-interaction=nonstopmode", f"{nombre}.tex"], carpeta)
-        if shutil.which("bibtex"):
-            _correr(["bibtex", nombre], carpeta)
-        for _ in range(2):
-            _correr(["pdflatex", "-interaction=nonstopmode", f"{nombre}.tex"],
-                    carpeta)
-    else:
-        print("no hay latexmk ni pdflatex en el PATH; instalá MiKTeX o TeX Live")
+        if _correr(["latexmk", "-pdf", "-interaction=nonstopmode",
+                    "-halt-on-error", f"{nombre}.tex"], carpeta) == 0:
+            hecho = True
+        else:
+            print("latexmk falló (¿falta Perl?); se intenta con pdflatex directo")
+    if not hecho:
+        if not shutil.which("pdflatex"):
+            print("no hay latexmk ni pdflatex en el PATH; instalá MiKTeX o TeX Live")
+            return False
+        _secuencia_pdflatex(carpeta, nombre)
+
+    if not pdf.is_file():
         return False
-    return (carpeta / f"{nombre}.pdf").is_file()
+    if pdf.stat().st_mtime <= antes:
+        print("la compilación no actualizó el PDF (quedó el de la corrida anterior)")
+        return False
+    return True
 
 
 def paginas_del_log(carpeta: pathlib.Path, nombre: str = "informe") -> Optional[int]:
