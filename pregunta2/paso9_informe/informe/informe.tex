@@ -43,8 +43,8 @@
   Flavio César Amayo Gamboa \quad \texttt{flavio.amayo.g@uni.pe} \\
   Gustavo Adolfo Huarcaya Delgado \quad \texttt{gustavo.huarcaya.d@uni.pe} \\
   Jhordy Joel Maximiliano Cusi \quad \texttt{jmaximilianoc@uni.pe} \\
-  Sergio Mondragon Contreras \quad \texttt{sergio.mondragon.c@uni.pe} \\
-  Facultad de Ingeniería Industrial y de Sistemas \\
+  Sergio Mondragon Contreras \quad \texttt{sergio.mondragon.c@uni.pe} \\[0.6em]
+  \textbf{Facultad de Ingeniería Industrial y de Sistemas} \\
   Universidad Nacional de Ingeniería
 }
 
@@ -54,10 +54,9 @@
 
 \maketitle
 
-% Los correos por integrante suman dos líneas al bloque de autores. Como el
-% cuerpo llena la página 10 al tope, se recupera ese alto acá para no empujar
-% las últimas líneas a la página 11 (no se recorta ningún contenido).
-\vspace{-4em}
+% Compensación del alto que suman los correos (ver nota tras el abstract),
+% repartida en dos puntos para que ningún gap quede encimado.
+\vspace{-2em}
 
 \begin{abstract}
 Se implementa una U-Net desde cero en PyTorch para segmentar agua de inundación
@@ -81,6 +80,11 @@ extensión máxima de la inundación y no la superficie de agua visible en SAR, 
 retrodispersión mediana ($-9.2$
 dB) se parece al suelo de Sen1Floods11 ($-8.4$) y no a su agua ($-16.5$).
 \end{abstract}
+
+% Segunda mitad de la compensación del alto de los correos (la otra está tras
+% \maketitle). Repartida así, ni la fecha ni el inicio del cuerpo quedan
+% encimados, y no se recorta ningún contenido.
+\vspace{-2em}
 
 % ============================================================================
 \section{Motivación}
